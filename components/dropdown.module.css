@@ -1,0 +1,56 @@
+/* Style the sidenav links and the dropdown button */
+.dropdown_btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #E5E5E5;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+  
+.icon {
+    padding-right: 10px;
+}
+
+/* On mouse-over */
+.dropdown_btn:hover, .dropdown_container a:hover {
+    color: #FECB6D;
+}
+  
+  
+/* Add an active class to the active dropdown button */
+.active {
+    color: #FECB6D;
+    background-color: #262626;
+}
+
+.active svg path{
+    fill:#FECB6D;
+}
+  
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown_container {
+    background-color: #262626;
+    font-size: 18px;
+}
+  
+.dropdown_container ul {
+    padding-left: 25px;
+    list-style: none;
+    margin: 0;
+}
+
+.dropdown_container li {
+    padding: 2.5px 0;
+}
+
+.dropdown_container a {
+    color: #E5E5E5;
+}

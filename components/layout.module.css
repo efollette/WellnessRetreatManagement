@@ -1,0 +1,46 @@
+.page {
+    height: 100%;
+    width: 100%;
+}
+
+.centered {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.yellow {
+    background: #FECB6D;
+}
+
+.white {
+    background: #EEEEEE;
+}
+
+.body {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    margin-left: 250px; /* Same as the width of the sidebar */
+    padding: 0px 20px;
+}
+
+.dashboard {
+    /* Something */
+    height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    letter-spacing: 5px;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 5px;
+    font-size: 11.5px;
+    font-style: italic;
+}
