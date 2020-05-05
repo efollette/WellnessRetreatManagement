@@ -1,8 +1,0 @@
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: row wrap;
-    align-content: space-between;
-    /* min-width: 830px; Min width where they are in grid format*/ 
-}
