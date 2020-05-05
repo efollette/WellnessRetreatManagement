@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+
+  mysql-db:
+    image: mysql:5.7.30
+    restart: always
+    env_file:
+      ./credentials.env
+    ports:
+      - 3307:3306                     
+      # <internal mysql="" port="" :="" exposed="">
+    volumes:
+      - ./mysql_db:/var/lib/mysql      
+      # Data on external volume (persist when container is stopped!)
+    container_name: db_sql         
+    # so we can connect easily
+
+  node-server:
+    build:
+      context: ./node-server  
+    ports:
+      - 5000:5000
+    depends_on: 
+        - 'mysql-db'
+    volumes:
+      - ./node-server:/app
+
+  next-web:
+    build:
+      context: ./next-web 
+    ports:
+      - 3000:3000
+    depends_on: 
+        - 'mysql-db'
+    volumes:
+      - ./next-web:/app
+
+volumes:                              
+# declare the volume used for the database above
+  mysql_db:
