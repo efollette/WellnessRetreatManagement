@@ -15,4 +15,5 @@ More detailed readme for node and next in their folders.
 If you really dont want to use docker than you can check the readmes in each folder for run commands. 
 You will need to install npm libraries locally (check each package.json for dependencies).
 Then you will need to spin up a Mysql instance locally.
+
 **JUST USE DOCKER**
