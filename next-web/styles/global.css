@@ -21,3 +21,8 @@ a:hover {
   height: 100%;
   width: 100%;
 }
+
+/*Theme the header*/
+.tabulator .tabulator-header .tabulator-col {
+    color:#FECB6D;
+}

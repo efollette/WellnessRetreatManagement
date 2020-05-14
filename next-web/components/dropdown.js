@@ -5,7 +5,7 @@
  * Date: May 3rd, 2020
  */
 import styles from './dropdown.module.css'
-import React, { Component } from 'React'
+import { Component } from 'react'
 import Link from 'next/link';
 
 export default class Dropdown extends Component {
