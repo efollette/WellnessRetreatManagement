@@ -3,39 +3,21 @@ const express = require('express')
 const cors = require('cors')
 const mysql = require('mysql')
 const dotenv = require('dotenv').config();
+const guestMod = require("./models/guest_mod.js")
+
+
+
+const events = require("./controllers/eventsController.js");
+const guests = require("./controllers/guestController.js");
+const rooms = require("./controllers/roomsController.js");
+const user = require("./controllers/userController.js");
+const bookings = require("./controllers/bookingsController.js");
 
 const PORT = 5000
 
 // dotenv.config();
 console.log(`Your env is ${process.env}`); // 8626
 console.log(`Your port is ${process.env.PORT}`); // 8626
-
-
-// connecting to a local instance of mysql
-const db_connection = mysql.createConnection({
-    host: 'mysql-db',
-    port: 3306,
-    user: 'root',
-    password: 'root',
-    database: 'test',
-    insecureAuth: true
-
-    // host: process.env.MYSQL_HOST,
-    // port: process.env.PORT,
-    // user: 'root',
-    // password: process.env.MYSQL_ROOT_PASSWORD,
-    // database: process.env.MYSQL_DB,
-})
-
-const SELECT_ALL_USERS_Q = 'select * from Users'
-
-db_connection.connect(err => {
-    // console.log(db_connection)
-    if (err) {
-        console.log('There was an error connecting')
-        return err
-    }
-})
 
 // console.log(db_connection)
 // cross origin something --> need to look this up
@@ -64,27 +46,64 @@ app.get('/users/add', (req, res) => {
             return res.send('added data')
         }
     })
-})
+});
+
+// Events 
+
+app.post("/events", events.create);
+
+app.get("/events", events.getAll);
+
+app.get("/events/eventsId", events.getOne);
+
+app.put("/events/eventsId", events.updateOne);
+
+app.delete("/events/eventsId", events.deleteOne);
 
 
-// returning data to the web
-app.get('/users', (req, res) => {
+// GUESTS
+app.post("/guests", guests.create);
 
-    db_connection.query(SELECT_ALL_USERS_Q, (err, results) => {
-        if (err) {
-            console.log('error getting all users')
-            console.log(err)
-            return res.send(err)
-        } else {
-            console.log('sending json')
-            return res.json({
-                data: results
-            })
-        }
-    })
+app.get("/guests", guests.getAll);
 
-})
+app.get("/guests/:guestId", guests.getOne);
 
+app.put("/guests/:guestId", guests.updateOne);
+
+app.delete("/guests/:guestId", guests.deleteOne);
+
+// Rooms
+app.post("/rooms", rooms.create);
+
+app.get("/rooms", rooms.getAll);
+
+app.get("/rooms/roomsId", rooms.getOne);
+
+app.put("/rooms/roomsId", rooms.updateOne);
+
+app.delete("/rooms/roomsId", rooms.deleteOne);
+
+// users
+app.post("/user", user.create);
+
+app.get("/user", user.getAll);
+
+app.get("/user/:guestId", user.getOne);
+
+app.put("/user/:guestId", user.updateOne);
+
+app.delete("/user/:guestId", user.deleteOne);
+
+// Bookings
+app.post("/bookings", bookings.create);
+
+app.get("/bookings", bookings.getAll);
+
+app.get("/bookings/:bookingId", bookings.getOne);
+
+app.put("/bookings/:bookingId", bookings.updateOne);
+
+app.delete("/bookings/:bookingId", bookings.deleteOne);
 
 // basically a rest server at this point
 app.listen(PORT, () => {

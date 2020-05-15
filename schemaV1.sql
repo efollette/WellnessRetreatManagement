@@ -16,6 +16,7 @@ CREATE TABLE `businessInfo` (
   `capacity` int
 );
 
+-- entering this into the db produces error --> doesnt like varchar[]
 CREATE TABLE `rooms` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `status` varchar(255),
@@ -41,6 +42,7 @@ CREATE TABLE `guests` (
   `status` varchar(255)
 );
 
+-- entering this into the db produces error --> doesnt like int[]
 CREATE TABLE `events` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `start` datetime,
