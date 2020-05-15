@@ -20,19 +20,19 @@ export default function Dashboard() {
   // Array of Dashboard item props detailing each item
   var dashboardItems = [
     {
-      'path': 'lodging',
+      'path': 'lodging/rooms_list',
       'icon': Icons[0](iconProps),
       'title': 'Rooms and Lodging',
       'subtitle': 'Available Rooms, Schedule Rooms'
     }, 
     {
-      'path': 'guests',
+      'path': 'guests/current_guests',
       'icon': Icons[1](iconProps),
       'title': 'Guest Communication',
       'subtitle': 'Email Hub, Customer Support'
     }, 
     {
-      'path': 'inventory',
+      'path': 'inventory/list',
       'icon': Icons[2](iconProps),
       'title': 'Inventory',
       'subtitle': 'Analytics, Status, Management'

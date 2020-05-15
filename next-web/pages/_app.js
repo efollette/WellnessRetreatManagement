@@ -6,6 +6,7 @@
  * Date: May 3rd, 2020
  */
 import '../styles/global.css'
+import "tabulator-tables/dist/css/tabulator_midnight.min.css";
 
 export default function App({ Component, pageProps }) {
     return <Component {...pageProps} />

@@ -10,7 +10,7 @@ import styles from './layout.module.css'
 
 export const siteTitle = 'Alafia'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, open }) {
   return (
     <div className={styles.page}>
       <Head></Head>
@@ -25,7 +25,7 @@ export default function Layout({ children, home }) {
       </div>
       ) : (
       <div className={`${styles.dashboard} ${styles.white}`}>
-        <Nav ></Nav>
+        <Nav open={open}></Nav>
         <main className={styles.body}>
             {children}
         </main>
