@@ -9,7 +9,7 @@ import styles from './nav.module.css'
 import Dropdown from './dropdown'
 import Icons  from '../components/icons'
 
-export default function Nav() {
+export default function Nav({open}) {
 
   // Properties for icons in sidebar
   var iconProps = {
@@ -21,15 +21,18 @@ export default function Nav() {
   var navItems = [
     {
       'name': 'Events',
+      'open': (open == 'Events'),
       'icon': Icons[3](iconProps),
       'links': [
         'List',
         'Schedule',
         'Assignments',
+        'Reservations'
       ]
     },
     {
       'name': 'Finances',
+      'open': (open == 'Finances'),
       'icon': Icons[4](iconProps),
       'links': [
         'Payments',
@@ -39,29 +42,29 @@ export default function Nav() {
     },
     {
       'name': 'Inventory',
+      'open': (open == 'Inventory'),
       'icon': Icons[2](iconProps),
       'links': [
         'List',
-        'Analystics',
-        'Management',
+        'Analytics',
       ]
     },
     {
       'name': 'Guests',
+      'open': (open == 'Guests'),
       'icon': Icons[1](iconProps),
       'links': [
-        'Support',
-        'Email'
+        'Guest List',
+        'Current Guests',
       ]
     },
     {
       'name': 'Lodging',
+      'open': (open == 'Lodging'),
       'icon': Icons[0](iconProps),
       'links': [
-        'Reservations',
-        'List',
-        'Available',
-        'All',
+        'Bookings',
+        'Rooms List',
       ]
   }];
 

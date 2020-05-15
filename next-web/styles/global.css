@@ -26,3 +26,14 @@ a:hover {
 .tabulator .tabulator-header .tabulator-col {
     color:#FECB6D;
 }
+
+/*Color the table rows*/
+.tabulator-row{
+  color:#FECB6D;
+}
+
+.tabulator-selected {
+  background: #FFA552 !important;
+  border: 1px solid rgb(255, 94, 0);
+  color: black;
+}

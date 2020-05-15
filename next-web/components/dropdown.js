@@ -27,7 +27,7 @@ export default class Dropdown extends Component {
         this.path = '/' + props.name.toLowerCase();
         this.links = props.links;
         this.state = {
-            open: false,
+            open: props.open,
         };
     }
 
@@ -59,7 +59,7 @@ export default class Dropdown extends Component {
                         <ul>
                             {this.links.map((name, key) => 
                                 <li key={key}>
-                                    <Link href={this.path+'/'+name.toLowerCase()}>
+                                    <Link href={this.path+'/'+ name.replace(/ /g, "_").toLowerCase()}>
                                         <a>{name}</a>
                                     </Link>
                                 </li>
