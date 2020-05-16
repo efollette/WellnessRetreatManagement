@@ -36,7 +36,7 @@ Booking.getAll = result => {
 }
 
 Booking.findById = (bookingId, res) => {
-    sql.query(`SELECT * FROM bookings WHERE id = ${bookingId}`, (err, res) => {
+    db.query(`SELECT * FROM bookings WHERE id = ${bookingId}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -56,7 +56,7 @@ Booking.findById = (bookingId, res) => {
 
 Booking.updateById = (bookingId, booking, res) => {
     db.query(
-        "UPDATE bookings SET start = ?, end = ?, room = ?, price = ?, guest = ?WHERE id = ?", [booking.start, booking.end, booking.room, booking.price, booking.guest, bookingId],
+        "UPDATE bookings SET start = ?, end = ?, room = ?, price = ?, guest = ? WHERE id = ?", [booking.start, booking.end, booking.room, booking.price, booking.guest, bookingId],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
