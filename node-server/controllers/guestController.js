@@ -1,3 +1,10 @@
+/**
+ * Filename: guestController.js
+ * Author: Oliver Thurn
+ * Description: controller for all guest
+ * Date: May 9th, 2020
+ */
+
 const guest = require("../models/guest_mod.js");
 
 exports.create = (req, res) => {

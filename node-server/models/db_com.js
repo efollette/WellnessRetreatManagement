@@ -1,20 +1,16 @@
+/**
+ * Filename: db_com.js
+ * Author: Oliver Thurn
+ * Description: Basic instance of mysql db connection. Provides a pool connection
+ * can be modified to fit more specific needs
+ * Date: May 9th, 2020
+ */
+
 const db = require("mysql");
 const auth = require("../auth/dbconfig.js");
 
 // connecting to a local instance of mysql
 const db_connection = db.createPool({
-    // host: 'mysql-db',
-    // port: 3306,
-    // user: 'root',
-    // password: 'root',
-    // database: 'dev_test',
-    // insecureAuth: true
-
-    // host: process.env.MYSQL_HOST,
-    // port: process.env.PORT,
-    // user: 'root',
-    // password: process.env.MYSQL_ROOT_PASSWORD,
-    // database: process.env.MYSQL_DB,
 
     host: auth.host,
     port: auth.port,

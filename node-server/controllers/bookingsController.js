@@ -1,3 +1,10 @@
+/**
+ * Filename: bookingsController.js
+ * Author: Oliver Thurn
+ * Description: controller for all bookings
+ * Date: May 9th, 2020
+ */
+
 const guest = require("../models/bookings_mod.js");
 
 exports.create = (req, res) => {

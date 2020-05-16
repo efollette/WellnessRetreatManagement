@@ -1,11 +1,18 @@
-// like imports. all the libraties you will use
+/**
+ * Filename: index.js
+ * Author: Oliver Thurn
+ *
+ * Description: Entry point for server
+ *
+ * Date: april 28th, 2020
+ */
+
+
 const express = require('express')
 const cors = require('cors')
 const mysql = require('mysql')
 const dotenv = require('dotenv').config();
 const guestMod = require("./models/guest_mod.js")
-
-
 
 const events = require("./controllers/eventsController.js");
 const guests = require("./controllers/guestController.js");

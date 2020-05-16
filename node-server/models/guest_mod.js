@@ -1,3 +1,10 @@
+/**
+ * Filename: guest_mod.js
+ * Author: Oliver Thurn
+ * Description: Data model for guests
+ * Date: May 9th, 2020
+ */
+
 // CREATE TABLE`guests`(
 //     `id` int PRIMARY KEY AUTO_INCREMENT,
 //     `first_name` varchar(255),
@@ -44,5 +51,21 @@ Guest.getAll = result => {
         result(null, res);
     });
 };
+
+Guest.findById = (guestId, res) => {
+
+}
+
+Guest.updateById = (guestId, guest, res) => {
+
+}
+
+Guest.remove = (id, res) => {
+
+}
+
+Guest.removeAll = result => {
+
+}
 
 module.exports = Guest;
