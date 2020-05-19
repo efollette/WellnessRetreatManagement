@@ -11,7 +11,7 @@ import Logo from '../components/logo'
 export default () => (
   <Layout home>
     <Logo></Logo>
-    <Button text={'Login'}></Button>
-    <Button text={'Sign Up'}></Button>
+    <Button text={'/login'}></Button>
+    <Button text={'/signup'}></Button>
   </Layout>
 );
