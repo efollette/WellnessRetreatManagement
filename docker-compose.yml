@@ -36,6 +36,7 @@ services:
         - 'mysql-db'
     volumes:
       - ./next-web:/app
+    container_name: rest
 
 volumes:                              
 # declare the volume used for the database above
