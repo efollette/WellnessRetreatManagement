@@ -5,24 +5,38 @@
  * Date: May 9th, 2020
  */
 
-const guest = require("../models/user_mod.js");
+const user = require("../models/user_mod.js");
 
 exports.create = (req, res) => {
-    return 'ok';
+    res.send('NOT IMPLEMENTED: user create');
 }
 
 exports.getAll = (req, res) => {
-    return 'ok';
+    console.log("user getAll");
+    user.getAll((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || "An error occured when waiting for database"
+            });
+        } else {
+            res.send(data);
+        }
+    })
 }
 
 exports.getOne = (req, res) => {
-    return 'ok';
+    res.send('NOT IMPLEMENTED: user getOne');
 }
 
 exports.updateOne = (req, res) => {
-    return 'ok';
+    res.send('NOT IMPLEMENTED: user updateOne');
 }
 
 exports.deleteOne = (req, res) => {
-    return 'ok';
+    res.send('NOT IMPLEMENTED: user deleteOne');
+}
+
+exports.verify = (req, res) => {
+    // console.log("verifying user");
+    // user.verifyUser(req.)
 }

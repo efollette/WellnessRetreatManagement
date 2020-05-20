@@ -117,4 +117,25 @@ User.removeAll = result => {
     });
 }
 
+User.verifyUser = (userName, passWord, res) => {
+    db.query(`SELECT * FROM users WHERE uname = ${userName}`, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+
+        if (res.length) {
+            if (res[0].pword === passWord) {
+                console.log("found user with matching password");
+                result(null, { 'userId': res[0].id })
+                return;
+            }
+        }
+
+        // No user with ID
+        result({ kind: "not_found" }, null);
+    });
+}
+
 module.exports = User;

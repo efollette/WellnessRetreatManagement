@@ -12,7 +12,7 @@ const express = require('express')
 const cors = require('cors')
 const mysql = require('mysql')
 const dotenv = require('dotenv').config();
-const guestMod = require("./models/guest_mod.js")
+const bodyParser = require('body-parser');
 
 const events = require("./controllers/eventsController.js");
 const guests = require("./controllers/guestController.js");
@@ -30,6 +30,7 @@ console.log(`Your port is ${process.env.PORT}`); // 8626
 // cross origin something --> need to look this up
 const app = express()
 app.use(cors())
+app.use(bodyParser.json())
 
 
 // main route
@@ -100,6 +101,8 @@ app.get("/user/:guestId", user.getOne);
 app.put("/user/:guestId", user.updateOne);
 
 app.delete("/user/:guestId", user.deleteOne);
+
+app.get("/user/verify", user.verify);
 
 // Bookings
 app.post("/bookings", bookings.create);
