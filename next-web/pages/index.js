@@ -15,3 +15,4 @@ export default () => (
     <Button text={'/signup'}></Button>
   </Layout>
 );
+

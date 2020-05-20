@@ -11,7 +11,7 @@ export default function Input({identity},{type}) {
     var tp = type;
     return (
         <div className={styles.box}>
-            <input type={tp}
+            <input type={tp} id={id} placeholder={id}></input>
         </div>
     );
 }
