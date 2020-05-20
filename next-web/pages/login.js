@@ -30,7 +30,12 @@ class Login extends Component {
   }
   
   handleChange(event) {
-    this.setState({ username: event.target.value })
+    if (event.target.id == 'username')
+      this.setState({ username: event.target.value })
+    else if (event.target.id == 'password')
+      this.setState({ password: event.target.value })
+    else
+      console.log("Error in adjusting login state.")
   }
 
   async handleSubmit (event) {

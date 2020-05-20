@@ -3,10 +3,11 @@ const fetch = require('isomorphic-unfetch')
 
 const login = async (req, res) => {
     //TODO
-  const { username } = await json(req)
+  /*const { username } = await json(req)
   const url = `https://api.github.com/users/${username}`
 
   try {
+    console.log("pussy")
     const response = await fetch(url)
     if (response.ok) {
       const { id } = await response.json()
@@ -16,7 +17,9 @@ const login = async (req, res) => {
     }
   } catch (error) {
     throw createError(error.statusCode, error.statusText)
-  }
+  }*/
+  console.log("im here")
+  send(res,200,{token: 'Yea its working'})
 }
 
 module.exports = (req, res) => run(req, res, login);
