@@ -13,7 +13,7 @@
 //     `status` varchar(255)
 // );
 
-const db = require("./db_com.js")
+const db = require("./db_coms.js");
 
 const Guest = function(guest) {
 

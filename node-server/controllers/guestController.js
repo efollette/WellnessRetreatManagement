@@ -12,11 +12,11 @@ exports.create = (req, res) => {
 }
 
 exports.getAll = (req, res) => {
-    console.log("exports get all");
+    console.log("guest exports get all");
     guest.getAll((err, data) => {
         if (err) {
             res.status(500).send({
-                message: err.message || "Some error occurred while retrieving customers."
+                message: err.message || "Some error occurred while retrieving guests."
             });
         } else {
             res.send(data);
