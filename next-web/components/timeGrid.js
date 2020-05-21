@@ -6,8 +6,10 @@
  */
 import { Component } from 'react'
 import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import styles from './timeGrid.module.css'
+
 
 class TimeGrid extends Component {
     constructor() {
@@ -22,7 +24,18 @@ class TimeGrid extends Component {
     render() {
      
         return (
-            <FullCalendar defaultView="timeGridWeek" plugins={[ timeGridPlugin ]} />
+            <FullCalendar defaultView="timeGridWeek" 
+            plugins= {[ dayGridPlugin, timeGridPlugin ]}
+            header= {{
+              left: 'dayGridMonth,timeGridWeek,timeGridDay',
+              center: 'title',
+              right:  'prevYear,prev,next,nextYear'
+            }}
+            footer= {{
+              left: '',
+              center: '',
+              right: 'prev,next'
+            }} />
         );
     }
 }
