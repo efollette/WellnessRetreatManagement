@@ -24,18 +24,20 @@ class TimeGrid extends Component {
     render() {
      
         return (
-            <FullCalendar defaultView="timeGridWeek" 
-            plugins= {[ dayGridPlugin, timeGridPlugin ]}
-            header= {{
-              left: 'dayGridMonth,timeGridWeek,timeGridDay',
-              center: 'title',
-              right:  'prevYear,prev,next,nextYear'
-            }}
-            footer= {{
-              left: '',
-              center: '',
-              right: 'prev,next'
-            }} />
+            <FullCalendar 
+                defaultView="timeGridWeek" 
+                plugins= {[ dayGridPlugin, timeGridPlugin ]}
+                header= {{
+                left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                center: 'title',
+                right:  'prevYear,prev,next,nextYear'
+                }}
+                footer= {{
+                left: '',
+                center: '',
+                right: 'prev,next'
+                }} 
+            />
         );
     }
 }

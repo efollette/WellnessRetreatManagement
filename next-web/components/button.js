@@ -8,7 +8,7 @@ import Link from 'next/link'
 import styles from './button.module.css'
 
 export default function Button({text}) {
-    var path = text.toLowerCase();
+    var path = '/' + text.toLowerCase();
     return (
         <div className={styles.box}>
             <Link href={path}>

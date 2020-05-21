@@ -12,7 +12,7 @@ export default function Logo() {
         <Link href="/">
             <a>
                 <img
-                src="/static/images/logo.png"
+                src="/images/logo.png"
                 className={styles.logo}
                 alt={'logo'}
                 />
