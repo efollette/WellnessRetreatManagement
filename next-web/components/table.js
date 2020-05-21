@@ -10,15 +10,24 @@ import styles from './table.module.css'
 
 class Table extends Component {
     constructor({columns, data}) {
+        // Mandatory super() call
         super(columns);
+        // Json string of column descriptors specified by Tabulator.js
         this.columns = columns;
+        // Reference to access this specific instance of the object
         this.tableRef = React.createRef();
+        // Function to addRow
         this.addRow = this.addRow.bind(this);
+        // Function to select all entries
         this.selectAll = this.selectAll.bind(this);
+        // Function to deselect all selections
         this.deselectAll = this.deselectAll.bind(this);
+        // Function to delete all entries
         this.deleteAll = this.deleteAll.bind(this);
+        // Function to delete a selection
         this.deleteSelection = this.deleteSelection.bind(this);
 
+        // Internal state of table
         this.state = {
             data: data,
             errorMsg: "",

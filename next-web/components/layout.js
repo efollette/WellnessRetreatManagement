@@ -10,6 +10,7 @@ import styles from './layout.module.css'
 
 export const siteTitle = 'Alafia'
 
+// Open is folder name to complete path for nav options
 export default function Layout({ children, home, open }) {
   return (
     <div className={styles.page}>

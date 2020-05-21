@@ -24,10 +24,9 @@ export default function Nav({open}) {
       'open': (open == 'Events'),
       'icon': Icons[3](iconProps),
       'links': [
-        'List',
+        'Event List',
         'Schedule',
-        'Assignments',
-        'Reservations'
+        'Add Events'
       ]
     },
     {
