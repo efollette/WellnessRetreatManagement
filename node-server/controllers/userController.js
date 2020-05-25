@@ -37,6 +37,5 @@ exports.deleteOne = (req, res) => {
 }
 
 exports.verify = (req, res) => {
-    // console.log("verifying user");
-    // user.verifyUser(req.)
+    res.send("you hit the server");
 }
