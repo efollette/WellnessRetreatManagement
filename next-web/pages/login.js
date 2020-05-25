@@ -44,7 +44,7 @@ class Login extends Component {
     event.preventDefault()
     const username = this.state.username
     const password = this.state.password
-    const url = "http://localhost:5000/user/verify"
+    const url = "http://rest:5000/user/verify"
 
     try {
       const response = await fetch(url, {
