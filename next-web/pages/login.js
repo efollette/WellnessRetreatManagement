@@ -8,6 +8,8 @@
 import Layout from '../components/layout';
 import Logo from '../components/logo'
 import { Component } from 'react';
+//import { login } from '../utils/auth'
+import fetch from 'isomorphic-unfetch'
 
 class Login extends Component {
 
@@ -42,7 +44,7 @@ class Login extends Component {
     event.preventDefault()
     const username = this.state.username
     const password = this.state.password
-    const url = this.props.apiUrl
+    const url = "http://localhost:5000/user/verify"
 
     try {
       const response = await fetch(url, {
@@ -52,7 +54,7 @@ class Login extends Component {
       })
       if (response.ok) {
         const { token } = await response.json()
-        login({ token })
+        //login({ token })
       } else {
         console.log('Login failed.')
         let error = new Error(response.statusText)

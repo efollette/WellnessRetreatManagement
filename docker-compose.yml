@@ -26,6 +26,7 @@ services:
         - 'mysql-db'
     volumes:
       - ./node-server:/app
+    container_name: rest
 
   next-web:
     build:
@@ -36,7 +37,7 @@ services:
         - 'mysql-db'
     volumes:
       - ./next-web:/app
-    container_name: rest
+    container_name: Alafia_Web
 
 volumes:                              
 # declare the volume used for the database above
