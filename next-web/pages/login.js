@@ -13,98 +13,109 @@ import fetch from 'isomorphic-unfetch'
 
 class Login extends Component {
 
-  static getInitialProps ({ req }) {
-    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http'
+    static getInitialProps({ req }) {
+        const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http'
 
-    const apiUrl = process.browser
-      ? `${protocol}://${window.location.host}/api/login.js`
-      : `${protocol}://${req.headers.host}/api/login.js`
+        const apiUrl = process.browser ?
+            `${protocol}://${window.location.host}/api/login.js` :
+            `${protocol}://${req.headers.host}/api/login.js`
 
-    return { apiUrl }
-  }
-
-  constructor (props) {
-    super(props)
-
-    this.state = { username: '', password: '', error: ''}
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  
-  handleChange(event) {
-    if (event.target.id == 'username')
-      this.setState({ username: event.target.value })
-    else if (event.target.id == 'password')
-      this.setState({ password: event.target.value })
-    else
-      console.log("Error in adjusting login state.")
-  }
-
-  async handleSubmit (event) {
-    event.preventDefault()
-    const username = this.state.username
-    const password = this.state.password
-    const url = "http://rest:5000/user/verify"
-
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({username, password})
-      })
-      if (response.ok) {
-        const { token } = await response.json()
-        //login({ token })
-      } else {
-        console.log('Login failed.')
-        let error = new Error(response.statusText)
-        error.response = response
-        return Promise.reject(error)
-      }
-    } catch (error) {
-      console.error(
-        'You have an error in your code or there are Network issues.',
-        error
-      )
-      throw new Error(error)
-
+        return { apiUrl }
     }
-  }
 
-  render () {
-    return (
-      <Layout home>
-        <Logo></Logo>
-        <div className='login'>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor='username'>Username</label>
+    constructor(props) {
+        super(props)
 
-            <input
-              type='text'
-              id='username'
-              name='username'
-              value={this.state.username}
-              onChange={this.handleChange}
+        this.state = { username: '', password: '', error: '' }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleChange(event) {
+        if (event.target.id == 'username')
+            this.setState({ username: event.target.value })
+        else if (event.target.id == 'password')
+            this.setState({ password: event.target.value })
+        else
+            console.log("Error in adjusting login state.")
+    }
+
+    async handleSubmit(event) {
+        event.preventDefault()
+        const username = this.state.username
+        const password = this.state.password
+        const url = "http://localhost:5000/user/verify"
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': '*'
+                },
+                body: JSON.stringify({ username, password })
+            })
+            if (response.ok) {
+                console.log("response was ok")
+                console.log(response)
+                    // const { token } = await response.json()
+                    //login({ token })
+
+            } else {
+                console.log('Login failed.')
+                let error = new Error(response.statusText)
+                error.response = response
+                return Promise.reject(error)
+            }
+        } catch (error) {
+            console.error(
+                'You have an error in your code or there are Network issues.',
+                error
+            )
+            throw new Error(error)
+
+        }
+    }
+
+    render() {
+        return ( <
+            Layout home >
+            <
+            Logo > < /Logo> <
+            div className = 'login' >
+            <
+            form onSubmit = { this.handleSubmit } >
+            <
+            label htmlFor = 'username' > Username < /label>
+
+            <
+            input type = 'text'
+            id = 'username'
+            name = 'username'
+            value = { this.state.username }
+            onChange = { this.handleChange }
             />
 
-            <label htmlFor='password'>Password</label>
+            <
+            label htmlFor = 'password' > Password < /label>
 
-            <input
-              type='password'
-              id='password'
-              name='password'
-              value={this.state.password}
-              onChange={this.handleChange}
+            <
+            input type = 'password'
+            id = 'password'
+            name = 'password'
+            value = { this.state.password }
+            onChange = { this.handleChange }
             />
 
-            <button type='submit'>Login</button>
+            <
+            button type = 'submit' > Login < /button>
 
-            <p className={`error ${this.state.error && 'show'}`}>
-              {this.state.error && `Error: ${this.state.error}`}
-            </p>
-          </form>
-        </div>
-        <style jsx>{`
+            <
+            p className = { `error ${this.state.error && 'show'}` } > { this.state.error && `Error: ${this.state.error}` } <
+            /p> < /
+            form > <
+            /div> <
+            style jsx > { `
           .login {
             max-width: 340px;
             margin: 0 auto;
@@ -133,9 +144,9 @@ class Login extends Component {
           .error.show {
             display: block;
           }
-        `}</style>
-      </Layout>
-    )
-  }
+        ` } < /style> < /
+            Layout >
+        )
+    }
 }
 export default Login

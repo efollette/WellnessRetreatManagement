@@ -37,7 +37,21 @@ exports.deleteOne = (req, res) => {
 }
 
 exports.verify = (req, res) => {
-    console.log(req);
-    res.send("you hit the server");
-    
+    console.log(req.body);
+    var userName = req.body['username'];
+    var passWord = req.body['password'];
+
+    console.log(userName);
+    console.log(passWord);
+
+    user.verifyUser(userName, passWord, (err, data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log("data from fucntion : " + data);
+            res.setHeader('Content-Type', 'application/json')
+            res.send(JSON.stringify(data));
+        }
+    });
+
 }

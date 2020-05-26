@@ -21,4 +21,6 @@ module.exports = app => {
 
     app.delete("/user/:guestId", user.deleteOne);
 
+    app.post("user/verify", user.verify);
+
 };

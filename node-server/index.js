@@ -102,7 +102,7 @@ app.put("/user/:guestId", user.updateOne);
 
 app.delete("/user/:guestId", user.deleteOne);
 
-app.get("/user/verify", user.verify);
+app.post("/user/verify", user.verify);
 
 // Bookings
 app.post("/bookings", bookings.create);
