@@ -44,8 +44,7 @@ class Login extends Component {
         event.preventDefault()
         const username = this.state.username
         const password = this.state.password
-        const url = "http://localhost:5000/user/verify"
-
+        const url = "http://localhost:5000/user/verify";
         try {
             const response = await fetch(url, {
                 method: 'POST',
@@ -56,10 +55,10 @@ class Login extends Component {
                 body: JSON.stringify({ username, password })
             })
             if (response.ok) {
-                console.log("response was ok")
-                console.log(response)
-                    // const { token } = await response.json()
-                    //login({ token })
+                console.log("response was ok");
+                // have to wait for the response to come back because its async
+                const data = await response.json()
+                console.log(data)
 
             } else {
                 console.log('Login failed.')
@@ -111,40 +110,44 @@ class Login extends Component {
             button type = 'submit' > Login < /button>
 
             <
-            p className = { `error ${this.state.error && 'show'}` } > { this.state.error && `Error: ${this.state.error}` } <
+            p className = { `
+            error $ { this.state.error && 'show' }
+            ` } > { this.state.error && `
+            Error: $ { this.state.error }
+            ` } <
             /p> < /
             form > <
             /div> <
             style jsx > { `
-          .login {
-            max-width: 340px;
-            margin: 0 auto;
-            padding: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-          }
-          form {
-            display: flex;
-            flex-flow: column;
-          }
-          label {
-            font-weight: 600;
-          }
-          input {
-            padding: 8px;
-            margin: 0.3rem 0 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-          }
-          .error {
-            margin: 0.5rem 0 0;
-            display: none;
-            color: brown;
-          }
-          .error.show {
-            display: block;
-          }
-        ` } < /style> < /
+            .login {
+                max - width: 340 px;
+                margin: 0 auto;
+                padding: 1 rem;
+                border: 1 px solid# ccc;
+                border - radius: 4 px;
+            }
+            form {
+                display: flex;
+                flex - flow: column;
+            }
+            label {
+                font - weight: 600;
+            }
+            input {
+                padding: 8 px;
+                margin: 0.3 rem 0 1 rem;
+                border: 1 px solid# ccc;
+                border - radius: 4 px;
+            }
+            .error {
+                margin: 0.5 rem 0 0;
+                display: none;
+                color: brown;
+            }
+            .error.show {
+                display: block;
+            }
+            ` } < /style> < /
             Layout >
         )
     }

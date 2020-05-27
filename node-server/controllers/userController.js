@@ -37,10 +37,9 @@ exports.deleteOne = (req, res) => {
 }
 
 exports.verify = (req, res) => {
-    console.log(req.body);
+    console.log(res);
     var userName = req.body['username'];
     var passWord = req.body['password'];
-
     console.log(userName);
     console.log(passWord);
 

@@ -128,15 +128,16 @@ User.verifyUser = (userName, passWord, result) => {
             result(null, err);
             return;
         }
-
         if (res2.length) {
             // probably want a loop or a better way to check if there are multiple user names
-            if (res2[0].pword === passWord) {
-                console.log("found user with matching password");
-                console.log(res2)
-                var userId = { 'userId': res2[0].id }
-                result(null, res2)
-                return;
+            for (const i = 0; i < res2.length; i++) {
+                if (res2[i].pword === passWord) {
+                    console.log("found user with matching password");
+                    console.log(res2)
+                    var userId = { 'userId': res2[i].id }
+                    result(null, JSON.stringify(userId));
+                    return;
+                }
             }
         } else {
             // No user with ID
