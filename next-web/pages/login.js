@@ -27,10 +27,10 @@ class Login extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { 
-            username: '', 
-            password: '', 
-            error: '' 
+        this.state = {
+            username: '',
+            password: '',
+            error: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -49,8 +49,7 @@ class Login extends Component {
         event.preventDefault()
         const username = this.state.username
         const password = this.state.password
-        const url = "http://localhost:5000/user/verify"
-
+        const url = "http://localhost:5000/user/verify";
         try {
             const response = await fetch(url, {
                 method: 'POST',
@@ -61,8 +60,11 @@ class Login extends Component {
                 body: JSON.stringify({ username, password })
             })
             if (response.ok) {
-                console.log("response was ok")
-                console.log(response)
+                console.log("response was ok");
+                // have to wait for the response to come back because its async
+                const data = await response.json()
+                console.log(data)
+
             } else {
                 console.log('Login failed.')
                 let error = new Error(response.statusText)
@@ -80,11 +82,24 @@ class Login extends Component {
     }
 
     render() {
+<<<<<<< HEAD
         return ( 
             <Layout home>
                 <Logo />  
                 <LoginForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} error={this.state.error}/>
             </Layout>
+=======
+        return ( <
+            Layout home >
+            <
+            Logo / >
+            <
+            LoginForm handleChange = { this.handleChange }
+            handleSubmit = { this.handleSubmit }
+            error = { this.state.error }
+            /> <
+            /Layout >
+>>>>>>> 0a7d8e0a6dae64f089ddb2952af76d31ba746337
         )
     }
 }

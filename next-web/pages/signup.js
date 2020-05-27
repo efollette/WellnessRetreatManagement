@@ -26,11 +26,11 @@ class Login extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { 
-            username: '', 
-            password: '', 
+        this.state = {
+            username: '',
+            password: '',
             cPassword: '',
-            error: '' 
+            error: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,13 +52,13 @@ class Login extends Component {
         const username = this.state.username
         const password = this.state.password
         const cPassword = this.state.cPassword
-        const url = "http://localhost:5000/user/verify"
+        const url = "http://localhost:5000/user/signUp"
 
         if (password != cPassword) {
-          this.setState({
-            error: "Passwords do not match! Please try again!"
-          })
-          console.log("Ex")
+            this.setState({
+                error: "Passwords do not match! Please try again!"
+            })
+            console.log("Ex")
         }
 
         try {
@@ -72,7 +72,8 @@ class Login extends Component {
             })
             if (response.ok) {
                 console.log("response was ok")
-                console.log(response)
+                const data = await response.json();
+                console.log(data)
             } else {
                 console.log('Login failed.')
                 let error = new Error(response.statusText)
@@ -90,11 +91,16 @@ class Login extends Component {
     }
 
     render() {
-        return ( 
-            <Layout home>
-                <Logo />  
-                <SignUp handleChange={this.handleChange} handleSubmit={this.handleSubmit} error={this.state.error}/>
-            </Layout >
+        return ( <
+            Layout home >
+            <
+            Logo / >
+            <
+            SignUp handleChange = { this.handleChange }
+            handleSubmit = { this.handleSubmit }
+            error = { this.state.error }
+            /> < /
+            Layout >
         )
     }
 }

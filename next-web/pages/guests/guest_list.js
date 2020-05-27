@@ -501,3 +501,10 @@ export default function Guests() {
         <Table columns={columns} data={sampleData}></Table>
     </Layout>
 }
+
+// Guests.getInitalProps = async (ctx) => {
+//     const res = await fetch("http://localhost:5000/guests");
+//     const data = await res.json();
+//     console.log(data);
+//     return data;
+// }

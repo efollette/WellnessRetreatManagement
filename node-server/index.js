@@ -104,6 +104,8 @@ app.delete("/user/:guestId", user.deleteOne);
 
 app.post("/user/verify", user.verify);
 
+app.post("/user/signUp", user.signUp);
+
 // Bookings
 app.post("/bookings", bookings.create);
 

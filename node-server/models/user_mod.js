@@ -128,20 +128,73 @@ User.verifyUser = (userName, passWord, result) => {
             result(null, err);
             return;
         }
-
         if (res2.length) {
             // probably want a loop or a better way to check if there are multiple user names
-            if (res2[0].pword === passWord) {
-                console.log("found user with matching password");
-                console.log(res2)
-                var userId = { 'userId': res2[0].id }
-                result(null, res2)
-                return;
+            for (const i = 0; i < res2.length; i++) {
+                if (res2[i].pword === passWord) {
+                    console.log("found user with matching password");
+                    console.log(res2)
+                    var userId = { 'userId': res2[i].id }
+                    result(null, JSON.stringify(userId));
+                    return;
+                }
             }
         } else {
             // No user with ID
             result({ kind: "not_found" }, null);
             return;
+        }
+
+    });
+}
+
+// checks if user already exists in DB
+// adds if not already a user
+// returns the userId --> DB Unique ID 
+User.signUpNewUser = (userName, passWord, result) => {
+    console.log("userName = " + userName + " passWord = " + passWord);
+    db.query("SELECT * FROM users WHERE uname = ?", userName, (err, res2) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+        if (res2.length) {
+            for (const i = 0; i < res2.length; i++) {
+                if (res2[i].pword === passWord) {
+                    console.log("Sign up user already exists");
+                    console.log(res2)
+                    var userId = { 'userId': res2[i].id }
+                    result(null, JSON.stringify(userId));
+                    return;
+                }
+            }
+        } else {
+            // No user with ID
+            console.log("Sign up: the user is new")
+            db.query(`INSERT INTO users(uname, pword) values('${userName}','${passWord}')`, (err, res) => {
+                if (err) {
+                    console.log("error: ", err);
+                    result(err, null);
+                    return;
+                }
+
+                console.log("created user: ", res);
+
+                db.query("SELECT * FROM users WHERE uname = ?", userName, (err, res3) => {
+                    if (err) {
+                        console.log("error: ", err);
+                        result(err, null);
+                        return;
+                    }
+                    if (res3.length) {
+                        const data = res3[0].id;
+                        console.log(data)
+                        result(null, data);
+                        return;
+                    }
+                });
+            });
         }
 
     });

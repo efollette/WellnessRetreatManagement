@@ -37,10 +37,9 @@ exports.deleteOne = (req, res) => {
 }
 
 exports.verify = (req, res) => {
-    console.log(req.body);
+    console.log(res);
     var userName = req.body['username'];
     var passWord = req.body['password'];
-
     console.log(userName);
     console.log(passWord);
 
@@ -49,6 +48,25 @@ exports.verify = (req, res) => {
             res.send(err);
         } else {
             console.log("data from fucntion : " + data);
+            res.setHeader('Content-Type', 'application/json')
+            res.send(JSON.stringify(data));
+        }
+    });
+
+}
+
+exports.signUp = (req, res) => {
+    console.log(res)
+    var userName = req.body['username'];
+    var passWord = req.body['password'];
+    console.log(userName);
+    console.log(passWord);
+
+    user.signUpNewUser(userName, passWord, (err, data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log("Data back from sign up : " + data);
             res.setHeader('Content-Type', 'application/json')
             res.send(JSON.stringify(data));
         }
