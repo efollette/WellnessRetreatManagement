@@ -23,6 +23,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-tabulator": "^0.12.7",
+    "swr": "^0.2.2",
     "tabulator-tables": "^4.6.3"
   },
   "devDependencies": {

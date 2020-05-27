@@ -82,16 +82,12 @@ class Login extends Component {
     }
 
     render() {
-        return ( <
-            Layout home >
-            <
-            Logo / >
-            <
-            LoginForm handleChange = { this.handleChange }
+        return ( <Layout home >
+            <Logo/>
+            < LoginForm handleChange = { this.handleChange }
             handleSubmit = { this.handleSubmit }
-            error = { this.state.error }
-            /> <
-            /Layout >
+            error = { this.state.error }/> 
+            </Layout >
         )
     }
 }

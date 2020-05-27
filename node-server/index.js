@@ -19,6 +19,7 @@ const guests = require("./controllers/guestController.js");
 const rooms = require("./controllers/roomsController.js");
 const user = require("./controllers/userController.js");
 const bookings = require("./controllers/bookingsController.js");
+const email = require("./controllers/emailController.js");
 
 const PORT = 5000
 
@@ -116,6 +117,10 @@ app.get("/bookings/:bookingId", bookings.getOne);
 app.put("/bookings/:bookingId", bookings.updateOne);
 
 app.delete("/bookings/:bookingId", bookings.deleteOne);
+
+// Email
+
+app.get("/email/sendone", email.sendSingleEmail);
 
 // basically a rest server at this point
 app.listen(PORT, () => {
