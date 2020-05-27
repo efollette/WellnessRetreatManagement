@@ -21,6 +21,8 @@
 #eventModal input {
     border: none;
     font-size: 20px;
+    background: rgba(0,0,0,0);
+    padding: 5px 10px;
 }
 
 #eventTitle {
@@ -61,4 +63,15 @@
 
 .dates {
     font-size: 25px;
+}
+
+.submit {
+    border: none;
+    background: #2C3E50;
+    color: white;
+    border-radius: 5px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 0.4em 0.65em;
 }

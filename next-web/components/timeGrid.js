@@ -19,7 +19,8 @@ class TimeGrid extends Component {
         super();
         this.openEventView = this.openEventView.bind(this)
         this.addEvent = this.addEvent.bind(this)
-        this.openEvent = this.openEvent.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.openEventAdd = this.openEventAdd.bind(this)
         this.calendarRef =  React.createRef();
         // Internal state of calendar
         this.state = {
@@ -70,7 +71,7 @@ class TimeGrid extends Component {
                 {
                     title: 'Overlap Time',
                     start: '2020-05-26T12:45:00',
-                    end: '2020-05-27T14:45:00',
+                    end: '2020-05-26T14:45:00',
                     allDay: false, // will make the time show
                     description: "An event that overlaps with another and lasts two days",
                     rooms: "",
@@ -84,6 +85,7 @@ class TimeGrid extends Component {
     openEventView(info) {
         this.setState(
             state => {
+                console.log(info)
                 if (info.view != null) {
                     var startDate = formatDate(info.event.start, {
                         day: 'numeric',
@@ -131,11 +133,22 @@ class TimeGrid extends Component {
                 else {
                     return {
                         viewEvent: !state.viewEvent,
+                        eventInfo: {
+                            title: "",
+                            start: "",
+                            end: "",
+                            startDate: "",
+                            endDate: "",
+                            allDay: false,
+                            description: "",
+                            rooms: "",
+                            guests: "",
+                            inventory: ""
+                        },
                     };
                 }
             }
         )
-        
     }
 
     // Get events api call
@@ -143,29 +156,224 @@ class TimeGrid extends Component {
         return this.state.events
     }
 
-    addEvent() {
+    handleChange(event) {
+        switch(event.target.id) {
+            case 'title':
+                this.setState({
+                    eventInfo: {
+                        title: event.target.value,
+                        start: this.state.eventInfo.start,
+                        end: this.state.eventInfo.end,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: this.state.eventInfo.guests,
+                        inventory: this.state.eventInfo.inventory,
+                    }
+                })
+                break
+            case 'startDate':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: this.state.eventInfo.start,
+                        end: this.state.eventInfo.end,
+                        startDate: event.target.value,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: this.state.eventInfo.guests,
+                        inventory: this.state.eventInfo.inventory
+                    }})
+                break
+            case 'endDate':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: this.state.eventInfo.start,
+                        end: this.state.eventInfo.end,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: event.target.value,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: this.state.eventInfo.guests,
+                        inventory: this.state.eventInfo.inventory,
+                    }
+                })
+                break
+            case 'allDay':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: this.state.eventInfo.start,
+                        end: this.state.eventInfo.end,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: this.state.eventInfo.guests,
+                        inventory: this.state.eventInfo.inventory,
+                        allDay: !this.state.eventInfo.allDay
+                    }
+                })
+                break
+            case 'startTime':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: event.target.value,
+                        end: this.state.eventInfo.end,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: this.state.eventInfo.guests,
+                        inventory: this.state.eventInfo.inventory,
+                    }
+                })
+                break
+            case 'endTime':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: this.state.eventInfo.start,
+                        end: event.target.value,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: this.state.eventInfo.guests,
+                        inventory: this.state.eventInfo.inventory,
 
+                    }
+                })
+                break
+            case 'description':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: this.state.eventInfo.start,
+                        end: this.state.eventInfo.end,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: event.target.value,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: this.state.eventInfo.guests,
+                        inventory: this.state.eventInfo.inventory,
+                    }
+                })
+                break
+            case 'rooms':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: this.state.eventInfo.start,
+                        end: this.state.eventInfo.end,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: event.target.value,
+                        guests: this.state.eventInfo.guests,
+                        inventory: this.state.eventInfo.inventory,
+                    }
+                })
+                break
+            case 'guests':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: this.state.eventInfo.start,
+                        end: this.state.eventInfo.end,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: event.target.value,
+                        inventory: this.state.eventInfo.inventory,       
+                    }
+                })
+                break
+            case 'inventory':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: this.state.eventInfo.start,
+                        end: this.state.eventInfo.end,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: this.state.eventInfo.guests,
+                        inventory: event.target.value
+                    }
+                })
+                break
+        }
+    }
+
+    addEvent() {
+        
+        var startTime = this.state.eventInfo.start == "" ? "00:00:00" : this.state.eventInfo.start
+        var endTime = this.state.eventInfo.end == "" ? startTime : this.state.eventInfo.end
+        var startDate = new Date(this.state.eventInfo.startDate + 'T' + startTime); // will be in local time
+        var endDate = new Date(this.state.eventInfo.endDate + 'T' + endTime); // will be in local time
+        
+        if (!isNaN(startDate.valueOf())) { // valid?
+            let eventos = [...this.state.events]
+            console.log(startDate)
+            console.log(endDate)
+            eventos = eventos.concat([{
+                title: this.state.eventInfo.title,
+                start: startDate,
+                end: endDate,
+                allDay: this.state.eventInfo.allDay,
+                description: this.state.eventInfo.description,
+                rooms: this.state.eventInfo.rooms,
+                guests: this.state.eventInfo.guests,
+                inventory: this.state.eventInfo.inventory
+            }])
+            this.setState(state => {
+                state.events = eventos
+                state.newEvent = !state.newEvent
+                return state
+            })
+            // TODO: Add to database here
+        } 
+        else {
+            console.log('Invalid date.');
+        }
     }
 
     // Add an event
-    openEvent() {
+    openEventAdd() {
         this.setState( state => {
             return { 
                 newEvent: !state.newEvent,
+                eventInfo: {
+                    title: "",
+                    start: "",
+                    end: "",
+                    startDate: "",
+                    endDate: "",
+                    allDay: false,
+                    description: "",
+                    rooms: "",
+                    guests: "",
+                    inventory: ""
+                },
             }
         })
-        var date = new Date('2020-05-21' + 'T00:00:00'); // will be in local time
-
-        if (!isNaN(date.valueOf())) { // valid?
-            this.calendarRef.current.calendar.addEvent({
-            title: 'New Event',
-            start: date,
-            allDay: true
-          });
-          console.log('Great. Now, update your database...');
-        } else {
-          console.log('Invalid date.');
-        }
       }
 
     // Move to the previous month
@@ -197,10 +405,10 @@ class TimeGrid extends Component {
                     header= {{
                         left: 'dayGridMonth, timeGridWeek, timeGridDay',
                         center: 'title',
-                        right:  'prevYear, prev, next, nextYear'
+                        right:  'addEvent'
                     }}
                     footer= {{
-                        left: 'addEvent',
+                        left: 'prevYear, prev, next, nextYear',
                         center: '',
                         right: 'prevMonth, today, nextMonth'
                     }} 
@@ -215,7 +423,7 @@ class TimeGrid extends Component {
                     customButtons= {{
                         addEvent: {
                             text: 'add event',
-                            click: () => this.openEvent()
+                            click: () => this.openEventAdd()
                         },
                         prevMonth: {
                             text: "-30 Days",
@@ -266,17 +474,32 @@ class TimeGrid extends Component {
                     </div>
                 )}
                 {this.state.newEvent && (
-                    <form id={styles.eventModal} onSubmit={this.addEvent}>
+                    <form id={styles.eventModal}>
                         <div id={styles.eventTitle}>
-                            <input required={true} name='title' type='text' placeholder='Event Title'></input>
-                            <span id={styles.close} onClick={this.openEvent}>X</span>
+                            <input id='title' required={true} name='title' type='text' value={this.state.eventInfo.title} onChange={this.handleChange} placeholder='Event Title'></input>
+                            <span id={styles.close} onClick={this.openEventAdd}>X</span>
                         </div>
                         <div id={styles.eventContent}>
                             <div className={styles.dates}>
-                                <label for='startDate'>Start Date: </label>
-                                <input required={true} name='startDate' type='text' placeholder='MM/DD/YYYY'></input>
-                                <label for='endDate'>End Date: </label>
-                                <input required={true} name='endDate' type='text' placeholder='MM/DD/YYYY'></input>
+                                <label htmlFor='startDate'>Start Date: </label>
+                                <input id='startDate' onChange={this.handleChange} value={this.state.eventInfo.startDate} required={true} name='startDate' type='text' placeholder='MM/DD/YYYY'></input><br />
+                                <label htmlFor='endDate'>End Date: </label>
+                                <input id='endDate' onChange={this.handleChange} value={this.state.eventInfo.endDate} required={true} name='endDate' type='text' placeholder='MM/DD/YYYY'></input><br />
+                                <label htmlFor='allDay'>All Day?</label>
+                                <input type='checkbox' id='allDay' name='allDay' value={this.state.eventInfo.allDay} onChange={this.handleChange}></input><br />
+                                <label htmlFor='startTime'>Start Time: </label>
+                                <input id='startTime' onChange={this.handleChange} value={this.state.eventInfo.start} required={false} name='startTime' type='text' placeholder='HH:MM:SS'></input><br />
+                                <label htmlFor='endTime'>End Time: </label>
+                                <input id='endTime' onChange={this.handleChange} value={this.state.eventInfo.end} required={false} name='endTime' type='text' placeholder='HH:MM:SS'></input><br />
+                                <label htmlFor='description'>Description: </label><br />
+                                <input id='description' onChange={this.handleChange} value={this.state.eventInfo.description} required={false} name='description' type='text' placeholder='Add description'></input><br />
+                                <label htmlFor='rooms'>Rooms: </label><br />
+                                <input id='rooms' onChange={this.handleChange} value={this.state.eventInfo.rooms} required={false} name='rooms' type='text' placeholder='Add rooms'></input><br />
+                                <label htmlFor='guests'>Guests: </label><br />
+                                <input id='guests' onChange={this.handleChange} value={this.state.eventInfo.guests} required={false} name='guests' type='text' placeholder='Add guests'></input><br />
+                                <label htmlFor='inventory'>Inventory: </label><br />
+                                <input id='inventory' onChange={this.handleChange} value={this.state.eventInfo.inventory} required={false} name='inventory' type='text' placeholder='Add items for this event'></input><br />
+                                <button type="button" className={styles.submit} onClick={this.addEvent}>Add To Calendar</button>
                             </div>
                         </div>
                     </form>

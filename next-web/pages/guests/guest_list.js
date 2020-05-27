@@ -9,6 +9,21 @@ import Table from '../../components/table'
 
 export default function Guests() {
 
+    /**
+     * TODO: Connect this to the database using our
+     * server. Function to get data goes here. 
+     * 
+     * Data format: guest[] - Array of guest data
+     * {
+     *      "id": number,
+            "last_name": string,
+            "first_name": string,
+            "email": string (email),
+            "status": "Active" or "Inactive",
+            "dob": date"
+     * }
+     */
+
     // Sample Guest Data
     const sampleData = [ 
         {

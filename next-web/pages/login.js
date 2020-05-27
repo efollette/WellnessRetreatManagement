@@ -84,7 +84,7 @@ class Login extends Component {
             <Layout home>
                 <Logo />  
                 <LoginForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} error={this.state.error}/>
-            </Layout >
+            </Layout>
         )
     }
 }
