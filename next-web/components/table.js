@@ -11,7 +11,7 @@ import styles from './table.module.css'
 class Table extends Component {
     constructor({columns, data}) {
         // Mandatory super() call
-        super(columns);
+        super({columns, data});
         // Json string of column descriptors specified by Tabulator.js
         this.columns = columns;
         // Reference to access this specific instance of the object

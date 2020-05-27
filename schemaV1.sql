@@ -65,3 +65,6 @@ ALTER TABLE `events` ADD FOREIGN KEY (`guests`) REFERENCES `guests` (`id`);
 
 -- insert into users(first_name, last_name, email, uname, pword, business_id)
 -- values('oliver', 'thurn', 'othurn', 'othurn', 'b2b', '001');
+
+-- insert into guests(first_name, last_name, email, status)
+-- values('oliver', 'thurn', 'othurn@ucsd.edu', 'active');

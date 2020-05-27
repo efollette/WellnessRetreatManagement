@@ -10,6 +10,7 @@ import Logo from '../components/logo'
 import { Component } from 'react';
 //import { login } from '../utils/auth'
 import fetch from 'isomorphic-unfetch'
+import LoginForm from '../components/loginForm'
 
 class Login extends Component {
 
@@ -26,7 +27,11 @@ class Login extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { username: '', password: '', error: '' }
+        this.state = {
+            username: '',
+            password: '',
+            error: ''
+        }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -80,75 +85,13 @@ class Login extends Component {
         return ( <
             Layout home >
             <
-            Logo > < /Logo> <
-            div className = 'login' >
+            Logo / >
             <
-            form onSubmit = { this.handleSubmit } >
-            <
-            label htmlFor = 'username' > Username < /label>
-
-            <
-            input type = 'text'
-            id = 'username'
-            name = 'username'
-            value = { this.state.username }
-            onChange = { this.handleChange }
-            />
-
-            <
-            label htmlFor = 'password' > Password < /label>
-
-            <
-            input type = 'password'
-            id = 'password'
-            name = 'password'
-            value = { this.state.password }
-            onChange = { this.handleChange }
-            />
-
-            <
-            button type = 'submit' > Login < /button>
-
-            <
-            p className = { `
-            error $ { this.state.error && 'show' }
-            ` } > { this.state.error && `
-            Error: $ { this.state.error }
-            ` } <
-            /p> < /
-            form > <
-            /div> <
-            style jsx > { `
-            .login {
-                max - width: 340 px;
-                margin: 0 auto;
-                padding: 1 rem;
-                border: 1 px solid# ccc;
-                border - radius: 4 px;
-            }
-            form {
-                display: flex;
-                flex - flow: column;
-            }
-            label {
-                font - weight: 600;
-            }
-            input {
-                padding: 8 px;
-                margin: 0.3 rem 0 1 rem;
-                border: 1 px solid# ccc;
-                border - radius: 4 px;
-            }
-            .error {
-                margin: 0.5 rem 0 0;
-                display: none;
-                color: brown;
-            }
-            .error.show {
-                display: block;
-            }
-            ` } < /style> < /
-            Layout >
+            LoginForm handleChange = { this.handleChange }
+            handleSubmit = { this.handleSubmit }
+            error = { this.state.error }
+            /> <
+            /Layout >
         )
     }
 }

@@ -23,4 +23,6 @@ module.exports = app => {
 
     app.post("user/verify", user.verify);
 
+    app.post('user/signUp', user.signUp);
+
 };

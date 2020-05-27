@@ -24,7 +24,7 @@ a:hover {
 
 /*Theme the header*/
 .tabulator .tabulator-header .tabulator-col {
-    color:#FECB6D;
+  color:#FECB6D;
 }
 
 /*Color the table rows*/
@@ -36,4 +36,23 @@ a:hover {
   background: #FFA552 !important;
   border: 1px solid rgb(255, 94, 0);
   color: black;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2e2e2e; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

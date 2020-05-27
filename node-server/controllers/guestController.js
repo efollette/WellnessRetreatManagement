@@ -19,7 +19,8 @@ exports.getAll = (req, res) => {
                 message: err.message || "Some error occurred while retrieving guests."
             });
         } else {
-            res.send(data);
+            console.log(data)
+            res.send(JSON.stringify(data));
         }
     });
 }
