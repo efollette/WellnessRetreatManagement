@@ -18,7 +18,6 @@ const db_connection = db.createPool({
     password: auth.password,
     database: auth.database,
     insecureAuth: auth.insecureAuth
-
 });
 
 module.exports = db_connection;

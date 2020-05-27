@@ -17,6 +17,8 @@
     "@fullcalendar/list": "^4.4.0",
     "@fullcalendar/react": "^4.4.0",
     "@fullcalendar/timegrid": "^4.4.0",
+    "fullcalendar": "^3.10.2",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "^9.3.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

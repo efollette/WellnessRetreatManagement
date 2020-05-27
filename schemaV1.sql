@@ -60,3 +60,8 @@ ALTER TABLE `bookings` ADD FOREIGN KEY (`room`) REFERENCES `rooms` (`id`);
 ALTER TABLE `bookings` ADD FOREIGN KEY (`guest`) REFERENCES `guests` (`id`);
 
 ALTER TABLE `events` ADD FOREIGN KEY (`guests`) REFERENCES `guests` (`id`);
+
+
+
+-- insert into users(first_name, last_name, email, uname, pword, business_id)
+-- values('oliver', 'thurn', 'othurn', 'othurn', 'b2b', '001');

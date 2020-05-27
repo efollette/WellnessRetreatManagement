@@ -41,6 +41,7 @@ User.getAll = result => {
 
         console.log("users: ", res);
         result(null, res);
+        return;
     });
 }
 
@@ -117,24 +118,32 @@ User.removeAll = result => {
     });
 }
 
-User.verifyUser = (userName, passWord, res) => {
-    db.query(`SELECT * FROM users WHERE uname = ${userName}`, (err, res) => {
+User.verifyUser = (userName, passWord, result) => {
+
+    console.log("uName = " + userName + " pWord = " + passWord);
+
+    db.query("SELECT * FROM users WHERE uname = ?", userName, (err, res2) => {
         if (err) {
             console.log("error: ", err);
-            result(err, null);
+            result(null, err);
             return;
         }
 
-        if (res.length) {
-            if (res[0].pword === passWord) {
+        if (res2.length) {
+            // probably want a loop or a better way to check if there are multiple user names
+            if (res2[0].pword === passWord) {
                 console.log("found user with matching password");
-                result(null, { 'userId': res[0].id })
+                console.log(res2)
+                var userId = { 'userId': res2[0].id }
+                result(null, res2)
                 return;
             }
+        } else {
+            // No user with ID
+            result({ kind: "not_found" }, null);
+            return;
         }
 
-        // No user with ID
-        result({ kind: "not_found" }, null);
     });
 }
 

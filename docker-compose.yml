@@ -1,7 +1,4 @@
 version: '3'
-networks:
-  isolation-network:
-    driver: bridge
 services:
 
   mysql-db:
@@ -22,8 +19,6 @@ services:
   node-server:
     build:
       context: ./node-server  
-    networks:
-      - isolation-network
     ports:
       - 5000:5000
     depends_on: 
@@ -35,8 +30,6 @@ services:
   next-web:
     build:
       context: ./next-web 
-    networks:
-      - isolation-network
     ports:
       - 3000:3000
     depends_on: 
