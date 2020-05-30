@@ -525,7 +525,10 @@ export default function RoomsList() {
             minWidth:30, 
             hozAlign:"center", 
             resizable:false, 
-            headerSort:false
+            headerSort:false,
+            cellClick: function(e, cell) {
+              cell.getRow().toggleSelect();
+            },
         },
         { // Room ID
             title: "ID",
@@ -564,16 +567,17 @@ export default function RoomsList() {
             editorParams: {
                 allowEmpty: true,
                 showListOnEmpty: true,
-                values: statusOptions
+                values: true
             },
             headerFilter: "select",
-            headerFilterParams: { values: statusOptions },
+            headerFilterParams: { values: true },
         },
         { // Room Type
             title: "Type",
             field: "type",
             editor: "input",
             headerFilter: "select",
+            headerFilterParams: { values: true },
         },
         { // Delete Row 
             minWidth:30, 

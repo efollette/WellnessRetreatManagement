@@ -20,7 +20,10 @@ export default function List() {
             minWidth:30, 
             hozAlign:"center", 
             resizable:false, 
-            headerSort:false
+            headerSort:false,
+            cellClick: function(e, cell) {
+                cell.getRow().toggleSelect();
+            },
         },
         { // Item ID
             title: "ID",

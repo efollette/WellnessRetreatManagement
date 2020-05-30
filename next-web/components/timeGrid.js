@@ -14,9 +14,10 @@ import styles from './timeGrid.module.css'
 
 
 class TimeGrid extends Component {
-    constructor() {
+    constructor(props) {
         // Mandatory super() call
-        super();
+        super(props);
+        this.events = props.events
         this.openEventView = this.openEventView.bind(this)
         this.addEvent = this.addEvent.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -32,53 +33,18 @@ class TimeGrid extends Component {
                 end: "",
                 startDate: "",
                 endDate: "",
-                allDay: false,
+                allDay: true,
                 description: "",
                 rooms: "",
                 guests: "",
-                inventory: ""
+                inventory: "",
+                repeats: false,
+                daysOfWeek: []
+
             },
-            events: [
-                {
-                    title: 'One Day',
-                    start: '2020-05-26',
-                    end: '2020-05-26',
-                    allDay: true,
-                    description: "An event that is all day for just one day",
-                    rooms: "",
-                    inventory: "",
-                    guests: ""
-                },
-                {
-                    title: 'Multi Day All Day',
-                    start: '2020-05-05',
-                    end: '2020-05-29',
-                    description: "A multi day, all day event",
-                    rooms: "",
-                    inventory: "",
-                    guests: ""
-                },
-                {
-                    title: 'Event With Time',
-                    start: '2020-05-26T12:30:00',
-                    end: '2020-05-26T13:30:00',
-                    allDay: false, // will make the time show
-                    description: "Event showing the time",
-                    rooms: "",
-                    inventory: "",
-                    guests: ""
-                },
-                {
-                    title: 'Overlap Time',
-                    start: '2020-05-26T12:45:00',
-                    end: '2020-05-26T14:45:00',
-                    allDay: false, // will make the time show
-                    description: "An event that overlaps with another and lasts two days",
-                    rooms: "",
-                    inventory: "",
-                    guests: ""
-                }
-            ]
+            // We will replace the following with events: this.events
+            events: this.events,
+            error: ""
         };
     }
 
@@ -139,11 +105,12 @@ class TimeGrid extends Component {
                             end: "",
                             startDate: "",
                             endDate: "",
-                            allDay: false,
+                            allDay: true,
                             description: "",
                             rooms: "",
                             guests: "",
-                            inventory: ""
+                            inventory: "",
+                            repeats: false,
                         },
                     };
                 }
@@ -157,7 +124,324 @@ class TimeGrid extends Component {
     }
 
     handleChange(event) {
-        switch(event.target.id) {
+        switch(event.target.id) {case 'mon':
+        if (event.target.checked) {
+            this.state.eventInfo.daysOfWeek.push(1)
+            this.setState({
+                eventInfo: {
+                    title: this.state.eventInfo.title,
+                    start: this.state.eventInfo.start,
+                    end: this.state.eventInfo.end,
+                    startDate: this.state.eventInfo.startDate,
+                    endDate: this.state.eventInfo.endDate,
+                    allDay: this.state.eventInfo.allDay,
+                    description: this.state.eventInfo.description,
+                    rooms: this.state.eventInfo.rooms,
+                    guests: this.state.eventInfo.guests,
+                    inventory: this.state.eventInfo.inventory,
+                    repeats: this.state.eventInfo.repeats,
+                    daysOfWeek: this.state.eventInfo.daysOfWeek
+                }
+            })
+        }
+        else {
+            var tmp = this.state.eventInfo.daysOfWeek
+            for( var i = 0; i < tmp.length; ++i ) {
+                if (tmp[i] == 1) tmp[i] = -8
+            }
+            this.setState({
+                eventInfo: {
+                    title: this.state.eventInfo.title,
+                    start: this.state.eventInfo.start,
+                    end: this.state.eventInfo.end,
+                    startDate: this.state.eventInfo.startDate,
+                    endDate: this.state.eventInfo.endDate,
+                    allDay: this.state.eventInfo.allDay,
+                    description: this.state.eventInfo.description,
+                    rooms: this.state.eventInfo.rooms,
+                    guests: this.state.eventInfo.guests,
+                    inventory: this.state.eventInfo.inventory,
+                    repeats: this.state.eventInfo.repeats,
+                    daysOfWeek: tmp
+                }
+            })
+        }
+        break;
+    case 'tue':
+        if (event.target.checked) {
+            this.state.eventInfo.daysOfWeek.push(2)
+            this.setState({
+                eventInfo: {
+                    title: this.state.eventInfo.title,
+                    start: this.state.eventInfo.start,
+                    end: this.state.eventInfo.end,
+                    startDate: this.state.eventInfo.startDate,
+                    endDate: this.state.eventInfo.endDate,
+                    allDay: this.state.eventInfo.allDay,
+                    description: this.state.eventInfo.description,
+                    rooms: this.state.eventInfo.rooms,
+                    guests: this.state.eventInfo.guests,
+                    inventory: this.state.eventInfo.inventory,
+                    repeats: this.state.eventInfo.repeats,
+                    daysOfWeek: this.state.eventInfo.daysOfWeek
+                }
+            })
+        }
+        else {
+            var tmp = this.state.eventInfo.daysOfWeek
+            for( var i = 0; i < tmp.length; ++i ) {
+                if (tmp[i] == 2) tmp[i] = -8
+            }
+            this.setState({
+                eventInfo: {
+                    title: this.state.eventInfo.title,
+                    start: this.state.eventInfo.start,
+                    end: this.state.eventInfo.end,
+                    startDate: this.state.eventInfo.startDate,
+                    endDate: this.state.eventInfo.endDate,
+                    allDay: this.state.eventInfo.allDay,
+                    description: this.state.eventInfo.description,
+                    rooms: this.state.eventInfo.rooms,
+                    guests: this.state.eventInfo.guests,
+                    inventory: this.state.eventInfo.inventory,
+                    repeats: this.state.eventInfo.repeats,
+                    daysOfWeek: tmp
+                }
+            })
+        }
+        break;
+    case 'wed':
+        if (event.target.checked) {
+            this.state.eventInfo.daysOfWeek.push(3)
+            this.setState({
+                eventInfo: {
+                    title: this.state.eventInfo.title,
+                    start: this.state.eventInfo.start,
+                    end: this.state.eventInfo.end,
+                    startDate: this.state.eventInfo.startDate,
+                    endDate: this.state.eventInfo.endDate,
+                    allDay: this.state.eventInfo.allDay,
+                    description: this.state.eventInfo.description,
+                    rooms: this.state.eventInfo.rooms,
+                    guests: this.state.eventInfo.guests,
+                    inventory: this.state.eventInfo.inventory,
+                    repeats: this.state.eventInfo.repeats,
+                    daysOfWeek: this.state.eventInfo.daysOfWeek
+                }
+            })
+        }
+        else {
+            var tmp = this.state.eventInfo.daysOfWeek
+            for( var i = 0; i < tmp.length; ++i ) {
+                if (tmp[i] == 3) tmp[i] = -8
+            }
+            this.setState({
+                eventInfo: {
+                    title: this.state.eventInfo.title,
+                    start: this.state.eventInfo.start,
+                    end: this.state.eventInfo.end,
+                    startDate: this.state.eventInfo.startDate,
+                    endDate: this.state.eventInfo.endDate,
+                    allDay: this.state.eventInfo.allDay,
+                    description: this.state.eventInfo.description,
+                    rooms: this.state.eventInfo.rooms,
+                    guests: this.state.eventInfo.guests,
+                    inventory: this.state.eventInfo.inventory,
+                    repeats: this.state.eventInfo.repeats,
+                    daysOfWeek: tmp
+                }
+            })
+        }
+        break;
+            case 'thu':
+                if (event.target.checked) {
+                    this.state.eventInfo.daysOfWeek.push(4)
+                    this.setState({
+                        eventInfo: {
+                            title: this.state.eventInfo.title,
+                            start: this.state.eventInfo.start,
+                            end: this.state.eventInfo.end,
+                            startDate: this.state.eventInfo.startDate,
+                            endDate: this.state.eventInfo.endDate,
+                            allDay: this.state.eventInfo.allDay,
+                            description: this.state.eventInfo.description,
+                            rooms: this.state.eventInfo.rooms,
+                            guests: this.state.eventInfo.guests,
+                            inventory: this.state.eventInfo.inventory,
+                            repeats: this.state.eventInfo.repeats,
+                            daysOfWeek: this.state.eventInfo.daysOfWeek 
+                        }
+                    })
+                }
+                else {
+                    var tmp = this.state.eventInfo.daysOfWeek
+                    for( var i = 0; i < tmp.length; ++i ) {
+                        if (tmp[i] == 4) tmp[i] = -8
+                    }
+                    this.setState({
+                        eventInfo: {
+                            title: this.state.eventInfo.title,
+                            start: this.state.eventInfo.start,
+                            end: this.state.eventInfo.end,
+                            startDate: this.state.eventInfo.startDate,
+                            endDate: this.state.eventInfo.endDate,
+                            allDay: this.state.eventInfo.allDay,
+                            description: this.state.eventInfo.description,
+                            rooms: this.state.eventInfo.rooms,
+                            guests: this.state.eventInfo.guests,
+                            inventory: this.state.eventInfo.inventory,
+                            repeats: this.state.eventInfo.repeats,
+                            daysOfWeek: tmp
+                        }
+                    })
+                }
+                break;
+            case 'fri':
+                if (event.target.checked) {
+                    this.state.eventInfo.daysOfWeek.push(5)
+                    this.setState({
+                        eventInfo: {
+                            title: this.state.eventInfo.title,
+                            start: this.state.eventInfo.start,
+                            end: this.state.eventInfo.end,
+                            startDate: this.state.eventInfo.startDate,
+                            endDate: this.state.eventInfo.endDate,
+                            allDay: this.state.eventInfo.allDay,
+                            description: this.state.eventInfo.description,
+                            rooms: this.state.eventInfo.rooms,
+                            guests: this.state.eventInfo.guests,
+                            inventory: this.state.eventInfo.inventory,
+                            repeats: this.state.eventInfo.repeats,
+                            daysOfWeek: this.state.eventInfo.daysOfWeek
+                        }
+                    })
+                }
+                else {
+                    var tmp = this.state.eventInfo.daysOfWeek
+                    for( var i = 0; i < tmp.length; ++i ) {
+                        if (tmp[i] == 5) tmp[i] = -8
+                    }
+                    this.setState({
+                        eventInfo: {
+                            title: this.state.eventInfo.title,
+                            start: this.state.eventInfo.start,
+                            end: this.state.eventInfo.end,
+                            startDate: this.state.eventInfo.startDate,
+                            endDate: this.state.eventInfo.endDate,
+                            allDay: this.state.eventInfo.allDay,
+                            description: this.state.eventInfo.description,
+                            rooms: this.state.eventInfo.rooms,
+                            guests: this.state.eventInfo.guests,
+                            inventory: this.state.eventInfo.inventory,
+                            repeats: this.state.eventInfo.repeats,
+                            daysOfWeek: tmp
+                        }
+                    })
+                }
+                break;
+            case 'sat':
+                if (event.target.checked) {
+                    this.state.eventInfo.daysOfWeek.push(6)
+                    this.setState({
+                        eventInfo: {
+                            title: this.state.eventInfo.title,
+                            start: this.state.eventInfo.start,
+                            end: this.state.eventInfo.end,
+                            startDate: this.state.eventInfo.startDate,
+                            endDate: this.state.eventInfo.endDate,
+                            allDay: this.state.eventInfo.allDay,
+                            description: this.state.eventInfo.description,
+                            rooms: this.state.eventInfo.rooms,
+                            guests: this.state.eventInfo.guests,
+                            inventory: this.state.eventInfo.inventory,
+                            repeats: this.state.eventInfo.repeats,
+                            daysOfWeek: this.state.eventInfo.daysOfWeek
+                        }
+                    })
+                }
+                else {
+                    var tmp = this.state.eventInfo.daysOfWeek
+                    for( var i = 0; i < tmp.length; ++i ) {
+                        if (tmp[i] == 6) tmp[i] = -8
+                    }
+                    this.setState({
+                        eventInfo: {
+                            title: this.state.eventInfo.title,
+                            start: this.state.eventInfo.start,
+                            end: this.state.eventInfo.end,
+                            startDate: this.state.eventInfo.startDate,
+                            endDate: this.state.eventInfo.endDate,
+                            allDay: this.state.eventInfo.allDay,
+                            description: this.state.eventInfo.description,
+                            rooms: this.state.eventInfo.rooms,
+                            guests: this.state.eventInfo.guests,
+                            inventory: this.state.eventInfo.inventory,
+                            repeats: this.state.eventInfo.repeats,
+                            daysOfWeek: tmp
+                        }
+                    })
+                }
+                break;
+            case 'sun':
+                if (event.target.checked) {
+                    this.state.eventInfo.daysOfWeek.push(0)
+                    this.setState({
+                        eventInfo: {
+                            title: this.state.eventInfo.title,
+                            start: this.state.eventInfo.start,
+                            end: this.state.eventInfo.end,
+                            startDate: this.state.eventInfo.startDate,
+                            endDate: this.state.eventInfo.endDate,
+                            allDay: this.state.eventInfo.allDay,
+                            description: this.state.eventInfo.description,
+                            rooms: this.state.eventInfo.rooms,
+                            guests: this.state.eventInfo.guests,
+                            inventory: this.state.eventInfo.inventory,
+                            repeats: this.state.eventInfo.repeats,
+                            daysOfWeek: this.state.eventInfo.daysOfWeek
+                        }
+                    })
+                }
+                else {
+                    for( var i = 0; i < this.state.eventInfo.daysOfWeek.length; ++i ) {
+                        if (this.state.eventInfo.daysOfWeek[i] == 0) this.state.eventInfo.daysOfWeek[i] = -8
+                    }
+                    this.setState({
+                        eventInfo: {
+                            title: this.state.eventInfo.title,
+                            start: this.state.eventInfo.start,
+                            end: this.state.eventInfo.end,
+                            startDate: this.state.eventInfo.startDate,
+                            endDate: this.state.eventInfo.endDate,
+                            allDay: this.state.eventInfo.allDay,
+                            description: this.state.eventInfo.description,
+                            rooms: this.state.eventInfo.rooms,
+                            guests: this.state.eventInfo.guests,
+                            inventory: this.state.eventInfo.inventory,
+                            repeats: this.state.eventInfo.repeats,
+                            daysOfWeek: this.state.eventInfo.daysOfWeek
+                        }
+                    })
+                }
+                break;
+            case 'repeats':
+                this.setState({
+                    eventInfo: {
+                        title: this.state.eventInfo.title,
+                        start: this.state.eventInfo.start,
+                        end: this.state.eventInfo.end,
+                        startDate: this.state.eventInfo.startDate,
+                        endDate: this.state.eventInfo.endDate,
+                        allDay: this.state.eventInfo.allDay,
+                        description: this.state.eventInfo.description,
+                        rooms: this.state.eventInfo.rooms,
+                        guests: this.state.eventInfo.guests,
+                        inventory: this.state.eventInfo.inventory,
+                        repeats: !this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek
+                    }
+                })
+                break;
             case 'title':
                 this.setState({
                     eventInfo: {
@@ -171,6 +455,8 @@ class TimeGrid extends Component {
                         rooms: this.state.eventInfo.rooms,
                         guests: this.state.eventInfo.guests,
                         inventory: this.state.eventInfo.inventory,
+                        repeats: this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek
                     }
                 })
                 break
@@ -186,7 +472,9 @@ class TimeGrid extends Component {
                         description: this.state.eventInfo.description,
                         rooms: this.state.eventInfo.rooms,
                         guests: this.state.eventInfo.guests,
-                        inventory: this.state.eventInfo.inventory
+                        inventory: this.state.eventInfo.inventory,
+                        repeats: this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek
                     }})
                 break
             case 'endDate':
@@ -202,23 +490,8 @@ class TimeGrid extends Component {
                         rooms: this.state.eventInfo.rooms,
                         guests: this.state.eventInfo.guests,
                         inventory: this.state.eventInfo.inventory,
-                    }
-                })
-                break
-            case 'allDay':
-                this.setState({
-                    eventInfo: {
-                        title: this.state.eventInfo.title,
-                        start: this.state.eventInfo.start,
-                        end: this.state.eventInfo.end,
-                        startDate: this.state.eventInfo.startDate,
-                        endDate: this.state.eventInfo.endDate,
-                        allDay: this.state.eventInfo.allDay,
-                        description: this.state.eventInfo.description,
-                        rooms: this.state.eventInfo.rooms,
-                        guests: this.state.eventInfo.guests,
-                        inventory: this.state.eventInfo.inventory,
-                        allDay: !this.state.eventInfo.allDay
+                        repeats: this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek
                     }
                 })
                 break
@@ -230,11 +503,13 @@ class TimeGrid extends Component {
                         end: this.state.eventInfo.end,
                         startDate: this.state.eventInfo.startDate,
                         endDate: this.state.eventInfo.endDate,
-                        allDay: this.state.eventInfo.allDay,
+                        allDay: event.target.value == "",
                         description: this.state.eventInfo.description,
                         rooms: this.state.eventInfo.rooms,
                         guests: this.state.eventInfo.guests,
                         inventory: this.state.eventInfo.inventory,
+                        repeats: this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek
                     }
                 })
                 break
@@ -251,6 +526,8 @@ class TimeGrid extends Component {
                         rooms: this.state.eventInfo.rooms,
                         guests: this.state.eventInfo.guests,
                         inventory: this.state.eventInfo.inventory,
+                        repeats: this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek
 
                     }
                 })
@@ -268,6 +545,8 @@ class TimeGrid extends Component {
                         rooms: this.state.eventInfo.rooms,
                         guests: this.state.eventInfo.guests,
                         inventory: this.state.eventInfo.inventory,
+                        repeats: this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek
                     }
                 })
                 break
@@ -284,6 +563,8 @@ class TimeGrid extends Component {
                         rooms: event.target.value,
                         guests: this.state.eventInfo.guests,
                         inventory: this.state.eventInfo.inventory,
+                        repeats: this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek
                     }
                 })
                 break
@@ -299,7 +580,9 @@ class TimeGrid extends Component {
                         description: this.state.eventInfo.description,
                         rooms: this.state.eventInfo.rooms,
                         guests: event.target.value,
-                        inventory: this.state.eventInfo.inventory,       
+                        inventory: this.state.eventInfo.inventory,
+                        repeats: this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek 
                     }
                 })
                 break
@@ -315,7 +598,9 @@ class TimeGrid extends Component {
                         description: this.state.eventInfo.description,
                         rooms: this.state.eventInfo.rooms,
                         guests: this.state.eventInfo.guests,
-                        inventory: event.target.value
+                        inventory: event.target.value,
+                        repeats: this.state.eventInfo.repeats,
+                        daysOfWeek: this.state.eventInfo.daysOfWeek
                     }
                 })
                 break
@@ -327,12 +612,11 @@ class TimeGrid extends Component {
         var startTime = this.state.eventInfo.start == "" ? "00:00:00" : this.state.eventInfo.start
         var endTime = this.state.eventInfo.end == "" ? startTime : this.state.eventInfo.end
         var startDate = new Date(this.state.eventInfo.startDate + 'T' + startTime); // will be in local time
-        var endDate = new Date(this.state.eventInfo.endDate + 'T' + endTime); // will be in local time
-        
-        if (!isNaN(startDate.valueOf())) { // valid?
+        var endDateStr = this.state.eventInfo.endDate == "" ? this.state.eventInfo.startDate : this.state.eventInfo.endDate
+        var endDate = new Date(endDateStr + 'T' + endTime); // will be in local time
+
+        if (this.state.eventInfo.title != "" && this.state.eventInfo.startDate != "") { // valid?
             let eventos = [...this.state.events]
-            console.log(startDate)
-            console.log(endDate)
             eventos = eventos.concat([{
                 title: this.state.eventInfo.title,
                 start: startDate,
@@ -341,17 +625,33 @@ class TimeGrid extends Component {
                 description: this.state.eventInfo.description,
                 rooms: this.state.eventInfo.rooms,
                 guests: this.state.eventInfo.guests,
-                inventory: this.state.eventInfo.inventory
+                inventory: this.state.eventInfo.inventory,
+                startRecur: this.state.eventInfo.repeats ? startDate : null,
+                daysOfWeek: this.state.eventInfo.repeats ? this.state.eventInfo.daysOfWeek : null,
+                startTime: this.state.eventInfo.repeats ? startTime : null,
+                endTime: this.state.eventInfo.repeats ? endTime : null,
             }])
             this.setState(state => {
                 state.events = eventos
                 state.newEvent = !state.newEvent
                 return state
             })
+            console.log(eventos)
+            console.log(this.state.events)
+            console.log(this.state.eventInfo.daysOfWeek)
             // TODO: Add to database here
         } 
         else {
-            console.log('Invalid date.');
+            this.setState(state => {
+                state.error = "Events need a title and a start date\n"
+                return state
+            })
+            setTimeout(() => {
+                this.setState(state => {
+                    state.error = ""
+                    return state
+                });
+              }, 5000)
         }
     }
 
@@ -366,11 +666,13 @@ class TimeGrid extends Component {
                     end: "",
                     startDate: "",
                     endDate: "",
-                    allDay: false,
+                    allDay: true,
                     description: "",
                     rooms: "",
                     guests: "",
-                    inventory: ""
+                    inventory: "",
+                    repeats: false,
+                    daysOfWeek: [],
                 },
             }
         })
@@ -387,7 +689,6 @@ class TimeGrid extends Component {
     }
      
     render() {
-     
         return (
             <div className={styles.container}>
                 <FullCalendar 
@@ -438,7 +739,7 @@ class TimeGrid extends Component {
                 {this.state.viewEvent && (
                     <div id={styles.eventModal}>
                         <div id={styles.eventTitle}>
-                            {this.state.eventInfo.title}
+                            <span contentEditable="true">{this.state.eventInfo.title}</span>
                             <span id={styles.close} onClick={this.openEventView}>X</span>
                         </div>
                         <div id={styles.eventContent}>
@@ -481,16 +782,33 @@ class TimeGrid extends Component {
                         </div>
                         <div id={styles.eventContent}>
                             <div className={styles.dates}>
+                                <span className={styles.error}>{`${this.state.error}\n`}</span>
                                 <label htmlFor='startDate'>Start Date: </label>
-                                <input id='startDate' onChange={this.handleChange} value={this.state.eventInfo.startDate} required={true} name='startDate' type='text' placeholder='MM/DD/YYYY'></input><br />
+                                <input id='startDate' onChange={this.handleChange} value={this.state.eventInfo.startDate} required={true} name='startDate' type='date' placeholder='YYYY-MM-DD'></input><br />
                                 <label htmlFor='endDate'>End Date: </label>
-                                <input id='endDate' onChange={this.handleChange} value={this.state.eventInfo.endDate} required={true} name='endDate' type='text' placeholder='MM/DD/YYYY'></input><br />
-                                <label htmlFor='allDay'>All Day?</label>
-                                <input type='checkbox' id='allDay' name='allDay' value={this.state.eventInfo.allDay} onChange={this.handleChange}></input><br />
+                                <input id='endDate' onChange={this.handleChange} value={this.state.eventInfo.endDate} required={false} name='endDate' type='date' placeholder='YYYY-MM-DD'></input><br />
+                                <label htmlFor='repeat'>Repeats?</label>
+                                <input id='repeats' name='repeat' type='checkbox' checked={this.state.eventInfo.repeats} onChange={this.handleChange}></input><br />
+                                {this.state.eventInfo.repeats && (<div className={styles.weekDays_selector}>
+                                        <input type="checkbox" id="sun" onChange={this.handleChange} className={styles.weekday} />
+                                        <label htmlFor="sun">S</label>
+                                        <input type="checkbox" id="mon" onChange={this.handleChange} className={styles.weekday} />
+                                        <label htmlFor="mon">M</label>
+                                        <input type="checkbox" id="tue" onChange={this.handleChange} className={styles.weekday} />
+                                        <label htmlFor="tue">T</label>
+                                        <input type="checkbox" id="wed" onChange={this.handleChange} className={styles.weekday} />
+                                        <label htmlFor="wed">W</label>
+                                        <input type="checkbox" id="thu" onChange={this.handleChange} className={styles.weekday} />
+                                        <label htmlFor="thu">T</label>
+                                        <input type="checkbox" id="fri" onChange={this.handleChange} className={styles.weekday} />
+                                        <label htmlFor="fri">F</label>
+                                        <input type="checkbox" id="sat" onChange={this.handleChange} className={styles.weekday} />
+                                        <label htmlFor="sat">S</label>
+                                    </div>)}
                                 <label htmlFor='startTime'>Start Time: </label>
-                                <input id='startTime' onChange={this.handleChange} value={this.state.eventInfo.start} required={false} name='startTime' type='text' placeholder='HH:MM:SS'></input><br />
+                                <input id='startTime' onChange={this.handleChange} value={this.state.eventInfo.start} required={false} name='startTime' type='time'></input><br />
                                 <label htmlFor='endTime'>End Time: </label>
-                                <input id='endTime' onChange={this.handleChange} value={this.state.eventInfo.end} required={false} name='endTime' type='text' placeholder='HH:MM:SS'></input><br />
+                                <input id='endTime' onChange={this.handleChange} value={this.state.eventInfo.end} required={false} name='endTime' type='time'></input><br />
                                 <label htmlFor='description'>Description: </label><br />
                                 <input id='description' onChange={this.handleChange} value={this.state.eventInfo.description} required={false} name='description' type='text' placeholder='Add description'></input><br />
                                 <label htmlFor='rooms'>Rooms: </label><br />

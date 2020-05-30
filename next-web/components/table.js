@@ -9,11 +9,11 @@ import { ReactTabulator } from "react-tabulator";
 import styles from './table.module.css'
 
 class Table extends Component {
-    constructor({columns, data}) {
+    constructor(props) {
         // Mandatory super() call
-        super({columns, data});
+        super(props);
         // Json string of column descriptors specified by Tabulator.js
-        this.columns = columns;
+        this.columns = props.columns;
         // Reference to access this specific instance of the object
         this.tableRef = React.createRef();
         // Function to addRow
@@ -26,11 +26,17 @@ class Table extends Component {
         this.deleteAll = this.deleteAll.bind(this);
         // Function to delete a selection
         this.deleteSelection = this.deleteSelection.bind(this);
+        // Function to push edits to database
+        this.confirmEdits = this.confirmEdits.bind(this);
+        // Function to push edits to database
+        this.onEdit = this.onEdit.bind(this);
+        
 
         // Internal state of table
         this.state = {
-            data: data,
+            data: props.data,
             errorMsg: "",
+            editedRows: new Set()
         };
     }
 
@@ -68,13 +74,30 @@ class Table extends Component {
             selected[row].deselect();
         }
     }  
+
+    onEdit(cell) {
+        var editedRow = cell.getRow().getData()
+        console.log(editedRow)
+        this.setState(
+            () => {
+                this.state.editedRows.add(editedRow)
+                console.log(this.state.editedRows)
+            }
+        )
+        console.log(this.state)
+    }
+
+    confirmEdits() {
+        // Take the contents of our edited rows set and push them to the database
+    }
      
     render() {
-        const { data, errorMsg } = this.state;
+        const { data, errorMsg, editedRows } = this.state;
      
         const options = {
-            selectable: true,
+
             persistence: true,
+            cellEdited: this.onEdit,
             layoutColumnsOnNewData: true,
             layout: "fitData", //fit columns to width of table (optional)
             responsiveLayout: "collapse", //hide columns that dont fit on the table
@@ -88,9 +111,6 @@ class Table extends Component {
             movableRows: true,
             resizableRows: true, //allow row order to be changed
             height: '80vh',
-            rowClick: function(e, row){
-                console.log(row.isSelected())
-            },
             rowContextMenu: [
                 {
                     label:"Delete Row",
@@ -115,6 +135,7 @@ class Table extends Component {
               <button id="deselect-all" className={styles.button} onClick={this.deselectAll}>Cancel Selection</button>
               <button id="delete-selection" className={styles.button} onClick={this.deleteSelection}>Delete Selection</button>
               <button id="delete-all" className={styles.button} onClick={this.deleteAll}>Delete All</button>
+              <button id="confirm-edits" className={styles.button} onClick={this.confirmEdits}>Confirm Edits</button>
             </div>
             <ReactTabulator
                 id={styles.table}

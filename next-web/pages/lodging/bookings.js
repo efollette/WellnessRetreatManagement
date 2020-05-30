@@ -663,12 +663,6 @@ export default function Bookings() {
         }
     ];
 
-    // Active or Inactive Booking
-    const statusOptions = {
-        Ongoing: "Ongoing",
-        Finished: "Finished",
-    };
-
     // Booking Data Columns
     const columns = [
         { // Selector
@@ -676,7 +670,10 @@ export default function Bookings() {
             minWidth:30, 
             hozAlign:"center", 
             resizable:false, 
-            headerSort:false
+            headerSort:false,
+            cellClick: function(e, cell) {
+              cell.getRow().toggleSelect();
+            },
         },
         { // Booking ID
             title: "Booking ID",
@@ -715,16 +712,17 @@ export default function Bookings() {
             editorParams: {
                 allowEmpty: true,
                 showListOnEmpty: true,
-                values: statusOptions
+                values: true
             },
             headerFilter: "select",
-            headerFilterParams: { values: statusOptions },
+            headerFilterParams: { values: true },
         },
         { // Room Type
             title: "Type",
             field: "type",
             editor: "input",
             headerFilter: "select",
+            headerFilterParams: { values: true }
         },
         { // Guest ID
             title: "Guest ID",

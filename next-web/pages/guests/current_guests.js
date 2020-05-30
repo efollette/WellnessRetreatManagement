@@ -422,7 +422,10 @@ export default function CurrentGuests() {
             minWidth: 30,
             hozAlign: "center",
             resizable: false,
-            headerSort: false
+            headerSort: false,
+            cellClick: function(e, cell) {
+                cell.getRow().toggleSelect();
+            },
         },
         { // Guest ID
             title: "ID",
@@ -479,10 +482,10 @@ export default function CurrentGuests() {
         },
     ];
 
-    return <Layout open = { "Guests" } >
-        <
-        h1 > Current Guests < /h1> <
-        Table columns = { columns }
-    data = { sampleData } > < /Table> <
-        /Layout>
+    return (
+        <Layout open={"Guests"}>
+            <h1> Current Guests </h1> 
+            <Table columns={columns} data ={sampleData} > </Table> 
+        </Layout>
+    )
 }

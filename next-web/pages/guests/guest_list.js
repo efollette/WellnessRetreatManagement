@@ -7,7 +7,6 @@
 import Layout from '../../components/layout'
 import Table from '../../components/table'
 import useSWR from 'swr'
-import { Component } from 'react'
 
 function Guests() {
 
@@ -439,7 +438,10 @@ function Guests() {
             minWidth: 30,
             hozAlign: "center",
             resizable: false,
-            headerSort: false
+            headerSort: false,
+            cellClick: function(e, cell) {
+                cell.getRow().toggleSelect();
+            },
         },
         { // Guest ID
             title: "ID",
@@ -504,7 +506,7 @@ function Guests() {
     return (
         <Layout open = { "Guests" }>
             <h1> Manage Guests </h1> 
-            <Table columns = { columns } data = { data }> 
+            <Table columns={columns} data={data}> 
             </Table> 
         </Layout>
     )
