@@ -74,6 +74,7 @@ class TimeGrid extends Component {
                     return this.state
                 }
             )
+            // TODO: Call deletion api here
         }
     }
 
