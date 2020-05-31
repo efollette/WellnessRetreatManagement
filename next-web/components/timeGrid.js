@@ -19,6 +19,7 @@ class TimeGrid extends Component {
         super(props);
         this.events = props.events
         this.openEventView = this.openEventView.bind(this)
+        this.deleteEvent = this.deleteEvent.bind(this)
         this.addEvent = this.addEvent.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.openEventAdd = this.openEventAdd.bind(this)
@@ -42,17 +43,44 @@ class TimeGrid extends Component {
                 daysOfWeek: []
 
             },
-            // We will replace the following with events: this.events
             events: this.events,
             error: ""
         };
     }
 
+    deleteEvent() {
+        var confirm = window.confirm('Are you sure you want to delete this event?')
+
+        if (confirm) {
+            var index = 0
+            var remove = null
+            var calendarEvents = this.calendarRef.current.getApi().getEvents()
+            for ( var i = 0; i < calendarEvents.length; ++i ) {
+                if (calendarEvents[i].title == this.state.eventInfo.title) {
+                    remove = calendarEvents[i]
+                    console.log("Found it!" + index)
+                }
+            }
+            for ( var i = 0; i < this.state.events.length; ++i ) {
+                if (this.state.events[i].title == this.state.eventInfo.title) index = i
+            }
+            this.setState(
+                () => {
+                    this.state.events.splice(index, 1)
+                    console.log(this.state.events)
+                    remove.remove()
+                    console.log(this.calendarRef.current.getApi().getEvents()[index])
+                    this.state.viewEvent = !this.state.viewEvent
+                    return this.state
+                }
+            )
+        }
+    }
+
     openEventView(info) {
         this.setState(
             state => {
-                console.log(info)
-                if (info.view != null) {
+                if (!state.viewEvent) {
                     var startDate = formatDate(info.event.start, {
                         day: 'numeric',
                         month: 'long',
@@ -692,6 +720,7 @@ class TimeGrid extends Component {
         return (
             <div className={styles.container}>
                 <FullCalendar 
+                    height={'parent'}
                     ref={this.calendarRef}
                     defaultView="timeGridWeek" 
                     eventSources={[
@@ -739,7 +768,7 @@ class TimeGrid extends Component {
                 {this.state.viewEvent && (
                     <div id={styles.eventModal}>
                         <div id={styles.eventTitle}>
-                            <span contentEditable="true">{this.state.eventInfo.title}</span>
+                            <span>{this.state.eventInfo.title}</span>
                             <span id={styles.close} onClick={this.openEventView}>X</span>
                         </div>
                         <div id={styles.eventContent}>
@@ -771,6 +800,7 @@ class TimeGrid extends Component {
                                 <h4>Inventory</h4>
                                 {this.state.eventInfo.inventory}
                             </div>
+                            <button type="button" className={styles.submit} onClick={this.deleteEvent}>Delete Event</button>
                         </div>
                     </div>
                 )}
