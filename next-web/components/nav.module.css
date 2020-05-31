@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn+SC&display=swap');
+
 .title {
     background: #FECB6D;
     height: 50px;
@@ -5,13 +7,15 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
-    font-weight: bold;
-    font-size: 25px;
-    font-style: italic;
+    font-size: 30px;
+    font-family: 'Vollkorn SC', serif;
 }
 
 .dash {
     color: #b16f9f;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: rgb(0, 153, 255);
+    letter-spacing: 5px;
 }
 
 .dash:hover {

@@ -32,7 +32,8 @@ class AddEventsForm extends Component {
                 daysOfWeek: []
 
             },
-            error: ""
+            error: "",
+            success: false
         };
     }
 

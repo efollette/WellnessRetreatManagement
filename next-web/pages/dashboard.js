@@ -20,35 +20,35 @@ export default function Dashboard() {
   // Array of Dashboard item props detailing each item
   var dashboardItems = [
     {
-      'path': 'lodging/rooms_list',
-      'icon': Icons[0](iconProps),
-      'title': 'Rooms and Lodging',
-      'subtitle': 'Available Rooms, Schedule Rooms'
-    }, 
+      'path': 'analytics/finances',
+      'icon': Icons[4](iconProps),
+      'title': 'Analytics',
+      'subtitle': 'Finances, Participation, Trends'
+    },
+    {
+      'path': 'events/schedule',
+      'icon': Icons[3](iconProps),
+      'title': 'Event Management',
+      'subtitle': 'Event List, Schedule Events'
+    },
     {
       'path': 'guests/current_guests',
       'icon': Icons[1](iconProps),
-      'title': 'Guest Communication',
-      'subtitle': 'Email Hub, Customer Support'
+      'title': 'Guest Management',
+      'subtitle': 'Current Guests List, Add Guests, Search'
     }, 
     {
       'path': 'inventory/list',
       'icon': Icons[2](iconProps),
       'title': 'Inventory',
-      'subtitle': 'Analytics, Status, Management'
+      'subtitle': 'Manage Items, Item List'
     }, 
     {
-      'path': 'events',
-      'icon': Icons[3](iconProps),
-      'title': 'Event Management',
-      'subtitle': 'Communication Hub, Customer Support'
+      'path': 'lodging/rooms_list',
+      'icon': Icons[0](iconProps),
+      'title': 'Rooms and Lodging',
+      'subtitle': 'Bookings, Rooms List'
     }, 
-    {
-      'path': 'finances',
-      'icon': Icons[4](iconProps),
-      'title': 'Finances',
-      'subtitle': 'Client Payments, Funds Monitor'
-    }
   ];
   
   return (

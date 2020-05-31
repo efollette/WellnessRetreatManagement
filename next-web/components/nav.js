@@ -20,23 +20,34 @@ export default function Nav({open}) {
   // Array of Dropdown button props for each nav item
   var navItems = [
     {
+      'name': 'Analytics',
+      'open': (open == 'Analytics'),
+      'icon': Icons[4](iconProps),
+      'links': [
+        'Events',
+        'Finances',
+        'Guests',
+        'Inventory',
+        'Lodging',
+      ]
+    },
+    {
       'name': 'Events',
       'open': (open == 'Events'),
       'icon': Icons[3](iconProps),
       'links': [
+        'Add Events',
         'Event List',
         'Schedule',
-        'Add Events'
       ]
     },
     {
-      'name': 'Finances',
-      'open': (open == 'Finances'),
-      'icon': Icons[4](iconProps),
+      'name': 'Guests',
+      'open': (open == 'Guests'),
+      'icon': Icons[1](iconProps),
       'links': [
-        'Payments',
-        'Monitor',
-        'Funds',
+        'Current Guests',
+        'Guest List',
       ]
     },
     {
@@ -45,16 +56,6 @@ export default function Nav({open}) {
       'icon': Icons[2](iconProps),
       'links': [
         'List',
-        'Analytics',
-      ]
-    },
-    {
-      'name': 'Guests',
-      'open': (open == 'Guests'),
-      'icon': Icons[1](iconProps),
-      'links': [
-        'Guest List',
-        'Current Guests',
       ]
     },
     {
@@ -71,7 +72,7 @@ export default function Nav({open}) {
     <div className={styles.nav}>
       <div className={styles.title}>
         <Link href='/dashboard'>
-          <a className={styles.dash}>ALAFIA</a>
+          <a className={styles.dash}>Alafia</a>
         </Link>
       </div>
       <div className={styles.items}>
