@@ -3,6 +3,9 @@
 # next.js build output
 .next
 
+# VS Code counter output
+.VSCodeCounter
+
 # dotenv environment variables file (build for Zeit Now)
 *.env
 

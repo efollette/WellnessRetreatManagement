@@ -99,8 +99,8 @@ class Table extends Component {
             persistence: true,
             cellEdited: this.onEdit,
             layoutColumnsOnNewData: true,
-            layout: "fitData", //fit columns to width of table (optional)
-            responsiveLayout: "collapse", //hide columns that dont fit on the table
+            layout: "fitDataFill", //fit columns to width of table (optional)
+            responsiveLayout: "", //hide columns that dont fit on the table
             tooltips: true, //show tool tips on cells
             addRowPos: "top", //when adding a new row, add it to the top of the table
             history: true, //allow undo and redo actions on the table
@@ -108,8 +108,8 @@ class Table extends Component {
             paginationSize: 20, //allow 20 rows per page of data
             paginationSizeSelector: [20, 50, 100, 200],
             movableColumns: true, //allow column order to be changed
-            movableRows: true,
-            resizableRows: true, //allow row order to be changed
+            movableRows: true, //allow row order to be changed
+            resizableRows: true, 
             height: '80vh',
             rowContextMenu: [
                 {
@@ -128,7 +128,7 @@ class Table extends Component {
         };
      
         return (
-          <div>
+          <div className={styles.constrain}>
             <div className={styles.bar}> 
               <button id="add-row-top" className={styles.button} onClick={this.addRow}>Add Row</button>
               <button id="select-all" className={styles.button} onClick={this.selectAll}>Select All</button>

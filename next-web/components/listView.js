@@ -6,7 +6,7 @@
  */
 
 import { Component } from 'react'
-import { formatDate, NamedTimeZoneImpl } from '@fullcalendar/core'
+import { formatDate } from '@fullcalendar/core'
 import FullCalendar from "@fullcalendar/react"
 import listPlugin from '@fullcalendar/list'
 import styles from './listView.module.css'
@@ -40,7 +40,7 @@ class ListView extends Component {
         this.setState(
             state => {
                 console.log(info)
-                if (info.view != null) {
+                if (!this.state.viewEvent) {
                     var startDate = formatDate(info.event.start, {
                         day: 'numeric',
                         month: 'long',
@@ -134,7 +134,7 @@ class ListView extends Component {
                      {this.state.viewEvent && (
                     <div id={styles.eventModal}>
                         <div id={styles.eventTitle}>
-                            <span contentEditable="true">{this.state.eventInfo.title}</span>
+                            <span>{this.state.eventInfo.title}</span>
                             <span id={styles.close} onClick={this.openEventView}>X</span>
                         </div>
                         <div id={styles.eventContent}>
