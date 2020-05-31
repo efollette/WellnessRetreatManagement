@@ -813,7 +813,9 @@ class TimeGrid extends Component {
                         </div>
                         <div id={styles.eventContent}>
                             <div className={styles.dates}>
-                                <span className={styles.error}>{`${this.state.error}\n`}</span>
+                                {this.state.error != "" && (
+                                    <div className={styles.error}>{`${this.state.error}`}</div>
+                                )}
                                 <label htmlFor='startDate'>Start Date: </label>
                                 <input id='startDate' onChange={this.handleChange} value={this.state.eventInfo.startDate} required={true} name='startDate' type='date' placeholder='YYYY-MM-DD'></input><br />
                                 <label htmlFor='endDate'>End Date: </label>
