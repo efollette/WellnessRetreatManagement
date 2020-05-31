@@ -1,0 +1,71 @@
+  
+  #Calendar {
+    height: 80%;
+    width: 60vw;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+#eventModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background: #e2e2e2;
+    width: 60%;
+    height: 75%;
+    border-radius: 10px;
+    border: #2e2e2e 1.5px solid;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#eventModal input {
+    border: none;
+    font-size: 18px;
+    background: rgba(0,0,0,0);
+    padding: 5px 10px;
+}
+
+#eventTitle {
+    font-size: 35px;
+    background: #FECB6D;
+    padding: 15px 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #2e2e2e;
+    outline: #2e2e2e 1.5px solid;
+    font-weight: 900;
+}
+
+#eventTitle input {
+    font-family: 'Montserrat';
+    font-size: 30px;
+    background: #FECB6D;
+    color: #2e2e2e;
+    font-weight: 900;
+    width: 70%;
+}
+
+#close {
+    float: right;
+    padding-right: 10px;
+}
+
+#close:hover {
+    cursor: pointer;
+    color: red;
+}
+
+#eventContent {
+    padding: 15px 10px;
+    overflow-y: scroll;
+    
+}
+
+.dates {
+    font-size: 25px;
+}
