@@ -8,7 +8,16 @@
 const user = require("../models/user_mod.js");
 
 exports.create = (req, res) => {
-    res.send('NOT IMPLEMENTED: user create');
+    console.log("user Create");
+    user.createNew((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || "An error occured when waiting for database"
+            });
+        } else {
+            res.send(data);
+        }
+    })
 }
 
 exports.getAll = (req, res) => {
@@ -25,15 +34,42 @@ exports.getAll = (req, res) => {
 }
 
 exports.getOne = (req, res) => {
-    res.send('NOT IMPLEMENTED: user getOne');
+    console.log("user getOne");
+    user.findById((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || "An error occured when waiting for database"
+            });
+        } else {
+            res.send(data);
+        }
+    })
 }
 
 exports.updateOne = (req, res) => {
-    res.send('NOT IMPLEMENTED: user updateOne');
+    console.log("user updateOne");
+    user.updateById((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || "An error occured when waiting for database"
+            });
+        } else {
+            res.send(data);
+        }
+    })
 }
 
 exports.deleteOne = (req, res) => {
-    res.send('NOT IMPLEMENTED: user deleteOne');
+    console.log("user deleteOne");
+    user.remove((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || "An error occured when waiting for database"
+            });
+        } else {
+            res.send(data);
+        }
+    })
 }
 
 exports.verify = (req, res) => {

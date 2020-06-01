@@ -8,7 +8,15 @@
 const guest = require("../models/guest_mod.js");
 
 exports.create = (req, res) => {
-
+    guest.createNew((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || "An error occured when waiting for database"
+            });
+        } else {
+            res.send(data);
+        }
+    })
 }
 
 exports.getAll = (req, res) => {
@@ -26,13 +34,37 @@ exports.getAll = (req, res) => {
 }
 
 exports.getOne = (req, res) => {
-
+    guest.findById((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || "An error occured when waiting for database"
+            });
+        } else {
+            res.send(data);
+        }
+    })
 }
 
 exports.updateOne = (req, res) => {
-
+    guest.updateById((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || "An error occured when waiting for database"
+            });
+        } else {
+            res.send(data);
+        }
+    })
 }
 
 exports.deleteOne = (req, res) => {
-
+    guest.remove((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || "An error occured when waiting for database"
+            });
+        } else {
+            res.send(data);
+        }
+    })
 }
