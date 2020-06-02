@@ -24,11 +24,7 @@ export default function Nav({open}) {
       'open': (open == 'Analytics'),
       'icon': Icons[4](iconProps),
       'links': [
-        'Events',
-        'Finances',
-        'Guests',
-        'Inventory',
-        'Lodging',
+        'Dashboard',
       ]
     },
     {

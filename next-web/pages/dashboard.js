@@ -20,7 +20,7 @@ export default function Dashboard() {
   // Array of Dashboard item props detailing each item
   var dashboardItems = [
     {
-      'path': 'analytics/finances',
+      'path': 'analytics/dashboard',
       'icon': Icons[4](iconProps),
       'title': 'Analytics',
       'subtitle': 'Finances, Participation, Trends'
