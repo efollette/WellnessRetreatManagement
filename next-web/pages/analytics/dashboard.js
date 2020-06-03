@@ -101,10 +101,18 @@ const pieData = [
   { name: 'Excelsior', value: 1000 },
 ]
 
+const stats = {
+  activeBookings: 15,
+  activeGuests: 48,
+  bookings: 480,
+  net: 4800,
+  eventRate: 75
+}
+
 export default function FAnalytics() {
 
     return <Layout open={"Analytics"}>
         <h1>Analytics Dashboard</h1>
-        <Dashboard line={lineData} pie={pieData} bar={barData}/>
+        <Dashboard line={lineData} pie={pieData} bar={barData} stats={stats}/>
     </Layout>
 }

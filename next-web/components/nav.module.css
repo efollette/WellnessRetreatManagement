@@ -56,7 +56,15 @@
 }
 
 .logout a {
-    color: #E5E5E5;
+    color: #fff;
+}
+
+.logout a:hover {
+    color: #FECB6D;
+}
+
+.icon {
+    padding-top: 10px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */

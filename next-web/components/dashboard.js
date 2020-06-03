@@ -20,13 +20,12 @@ export default class Dashboard extends Component {
         this.line = props.line
         this.bar = props.bar
         this.pie = props.pie
+        this.stats = props.stats
         this.renderActiveShape = this.renderActiveShape.bind(this)
         this.state = {
             activeIndex: 0,
         };
     }
-
-    
 
     onPieEnter = (_, index) => {
         this.setState({
@@ -88,10 +87,6 @@ export default class Dashboard extends Component {
                     <div className={styles.dTitle}>
                         Bookings and Guests
                     </div>
-                    <div className={styles.metricBox}>
-                            Total Active Bookings: <br />
-                            <span className={styles.metric}>48</span>
-                    </div>
                     <div className={styles.graphSpace}>
                         <span>Event Participation vs. Capacity by Week</span>
                         <div className={styles.chart}>
@@ -108,10 +103,22 @@ export default class Dashboard extends Component {
                             </ResponsiveContainer>
                         </div>
                     </div>
+                    <div className={styles.metricBox}>
+                        <div className={styles.metricTitle}>Total Active Bookings: </div>
+                        <div className={styles.metric}>{this.stats.activeBookings}</div>
+                        <div className={styles.metricTitle}>Total Active Guests: </div>
+                        <div className={styles.metric}>{this.stats.activeGuests}</div>
+                    </div>
                 </div>
                 <div className={styles.finances}>
                     <div className={styles.dTitle}>Finances</div>
-                    <div className={styles.graphSpace}>
+                    <div className={styles.metricBox1}>
+                        <div className={styles.metricTitle}>Weekly Bookings Revenue: </div>
+                        <div className={styles.metric}>${this.stats.bookings}</div>
+                        <div className={styles.metricTitle}>Net Revenue: </div>
+                        <div className={styles.metric}>${this.stats.net}</div>
+                    </div>
+                    <div className={styles.pigraphSpace}>
                         <span>Revenue by Booking Type</span>
                         <div className={styles.pi}>
                             <ResponsiveContainer>
@@ -129,10 +136,6 @@ export default class Dashboard extends Component {
                                 </PieChart>
                             </ResponsiveContainer>
                         </div>
-                    </div>
-                    <div className={styles.metricBox}>
-                        Total Bookings Revenue: <br />
-                        <span className={styles.metric}>$480</span>
                     </div>
                 </div>
                 <div className={styles.events}>
@@ -154,8 +157,8 @@ export default class Dashboard extends Component {
                         </div>
                     </div>
                     <div className={styles.metricBox}>
-                            Event Participation Rate: <br />
-                            <span className={styles.metric}>75%</span>
+                        <div className={styles.metricTitle}>Event Participation Rate: </div>
+                        <div className={styles.metric}>{this.stats.eventRate}%</div>
                     </div>
                 </div>
             </div>

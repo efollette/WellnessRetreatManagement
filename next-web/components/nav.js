@@ -76,9 +76,14 @@ export default function Nav({open}) {
       </div>
       <div >
         <button className={styles.logout}>
-          <Link href='/login'>
-            <a>Logout</a>
-          </Link>
+          <div className={styles.icon}>
+            {Icons[5](iconProps)}
+          </div>
+          <div>
+            <Link href='/login'>
+              <a>Logout</a>
+            </Link>
+          </div>
         </button>
       </div>
     </div>

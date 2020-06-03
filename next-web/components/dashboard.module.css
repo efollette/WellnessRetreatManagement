@@ -15,6 +15,14 @@
     text-align: center;
 }
 
+.pigraphSpace {
+    width: 50%;
+    height: calc(100% - 25px);
+    border: 1px solid black;
+    box-sizing: border-box;
+    text-align: center;
+}
+
 .pi {
     width: 100%;
     height: inherit;
@@ -57,6 +65,25 @@
     box-sizing: border-box;
 }
 
+.metricBox1 {
+    text-align: center;
+    width: 50%;
+    height: calc(100% - 25px);
+    display: flex;
+    flex-flow: column;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.metricTitle {
+    font-size: 20px;
+}
+
 .metric {
+    height: 100%;
     font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
 }
