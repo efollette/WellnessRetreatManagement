@@ -48,6 +48,7 @@ class TimeGrid extends Component {
         };
     }
 
+    // TODO: Call deletion api here
     deleteEvent() {
         var confirm = window.confirm('Are you sure you want to delete this event?')
 
@@ -147,7 +148,7 @@ class TimeGrid extends Component {
         )
     }
 
-    // Get events api call
+    // TODO: Get events api call goes here
     getEvents() {
         return this.state.events
     }
@@ -636,6 +637,7 @@ class TimeGrid extends Component {
         }
     }
 
+    // TODO: Add to database here
     addEvent() {
         
         var startTime = this.state.eventInfo.start == "" ? "00:00:00" : this.state.eventInfo.start
@@ -705,7 +707,7 @@ class TimeGrid extends Component {
                 },
             }
         })
-      }
+    }
 
     // Move to the previous month
     prevMonth() {

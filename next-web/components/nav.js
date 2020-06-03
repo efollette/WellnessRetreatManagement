@@ -74,6 +74,13 @@ export default function Nav({open}) {
       <div className={styles.items}>
         {navItems.map((props, key) => <Dropdown {...props} key={key}/>)} 
       </div>
+      <div >
+        <button className={styles.logout}>
+          <Link href='/login'>
+            <a>Logout</a>
+          </Link>
+        </button>
+      </div>
     </div>
   );
 }
